@@ -1,0 +1,4964 @@
+# JAIPI-JUDICIAL V3 - COMPLETE DEEP ARCHITECTURE
+
+## Government API & Legal Compliance Watchdog System
+
+I'll now build the **complete, production-grade** system with maximum depth.
+
+---
+
+# 📁 COMPLETE PROJECT STRUCTURE
+
+```
+JAIPI-JUDICIAL-V3/
+├── core/
+│   ├── __init__.py
+│   ├── orchestrator.py
+│   ├── agent_registry.py
+│   ├── message_bus.py
+│   ├── state_manager.py
+│   ├── task_scheduler.py
+│   ├── event_emitter.py
+│   ├── circuit_breaker.py
+│   ├── rate_limiter.py
+│   ├── retry_policy.py
+│   └── dependency_injection.py
+├── agents/
+│   ├── __init__.py
+│   ├── base_agent.py
+│   ├── agent_pool.py
+│   ├── legal/
+│   │   ├── __init__.py
+│   │   ├── compliance_agent.py
+│   │   ├── statute_parser_agent.py
+│   │   ├── case_law_agent.py
+│   │   ├── regulatory_agent.py
+│   │   ├── citation_agent.py
+│   │   ├── contract_analyzer_agent.py
+│   │   └── policy_agent.py
+│   ├── monitoring/
+│   │   ├── __init__.py
+│   │   ├── api_monitor_agent.py
+│   │   ├── schema_validator_agent.py
+│   │   ├── performance_agent.py
+│   │   ├── security_scan_agent.py
+│   │   └── data_quality_agent.py
+│   ├── analysis/
+│   │   ├── __init__.py
+│   │   ├── reasoning_agent.py
+│   │   ├── risk_assessment_agent.py
+│   │   ├── trend_analysis_agent.py
+│   │   ├── anomaly_detection_agent.py
+│   │   └── nlp_agent.py
+│   ├── workflow/
+│   │   ├── __init__.py
+│   │   ├── audit_agent.py
+│   │   ├── report_generator_agent.py
+│   │   ├── notification_agent.py
+│   │   ├── escalation_agent.py
+│   │   └── remediation_agent.py
+│   └── integration/
+│       ├── __init__.py
+│       ├── government_api_agent.py
+│       ├── database_agent.py
+│       ├── external_service_agent.py
+│       └── document_processor_agent.py
+├── domain/
+│   ├── __init__.py
+│   ├── legal/
+│   │   ├── __init__.py
+│   │   ├── entities.py
+│   │   ├── statutes.py
+│   │   ├── regulations.py
+│   │   ├── case_law.py
+│   │   ├── citations.py
+│   │   ├── jurisdictions.py
+│   │   └── compliance_rules.py
+│   ├── government/
+│   │   ├── __init__.py
+│   │   ├── agencies.py
+│   │   ├── api_registry.py
+│   │   ├── data_standards.py
+│   │   └── procurement.py
+│   └── common/
+│       ├── __init__.py
+│       ├── value_objects.py
+│       ├── aggregates.py
+│       └── events.py
+├── services/
+│   ├── __init__.py
+│   ├── compliance_service.py
+│   ├── legal_research_service.py
+│   ├── api_monitoring_service.py
+│   ├── audit_service.py
+│   ├── notification_service.py
+│   ├── reporting_service.py
+│   ├── cache_service.py
+│   └── search_service.py
+├── infrastructure/
+│   ├── __init__.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── connection.py
+│   │   ├── models.py
+│   │   ├── repositories.py
+│   │   ├── migrations/
+│   │   └── seeds/
+│   ├── messaging/
+│   │   ├── __init__.py
+│   │   ├── message_queue.py
+│   │   ├── event_bus.py
+│   │   └── pubsub.py
+│   ├── cache/
+│   │   ├── __init__.py
+│   │   ├── redis_cache.py
+│   │   └── local_cache.py
+│   ├── http/
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   ├── retry_client.py
+│   │   └── rate_limited_client.py
+│   └── storage/
+│       ├── __init__.py
+│       ├── file_storage.py
+│       └── document_store.py
+├── nlp/
+│   ├── __init__.py
+│   ├── legal_tokenizer.py
+│   ├── citation_extractor.py
+│   ├── entity_recognizer.py
+│   ├── text_classifier.py
+│   ├── summarizer.py
+│   ├── embeddings.py
+│   └── models/
+│       ├── __init__.py
+│       └── legal_bert.py
+├── rules_engine/
+│   ├── __init__.py
+│   ├── engine.py
+│   ├── rule_parser.py
+│   ├── condition_evaluator.py
+│   ├── action_executor.py
+│   └── rules/
+│       ├── __init__.py
+│       ├── federal/
+│       ├── state/
+│       └── agency/
+├── api/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── compliance.py
+│   │   ├── monitoring.py
+│   │   ├── legal.py
+│   │   ├── reports.py
+│   │   ├── agents.py
+│   │   └── admin.py
+│   ├── middleware/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── logging.py
+│   │   ├── rate_limit.py
+│   │   └── error_handler.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── requests.py
+│   │   └── responses.py
+│   └── dependencies.py
+├── workers/
+│   ├── __init__.py
+│   ├── compliance_worker.py
+│   ├── monitoring_worker.py
+│   ├── analysis_worker.py
+│   └── report_worker.py
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── logging_config.py
+│   ├── agents_config.yaml
+│   ├── rules_config.yaml
+│   ├── jurisdictions.yaml
+│   ├── government_apis.yaml
+│   └── compliance_frameworks.yaml
+├── utils/
+│   ├── __init__.py
+│   ├── crypto.py
+│   ├── datetime_utils.py
+│   ├── validators.py
+│   ├── formatters.py
+│   ├── parsers.py
+│   └── helpers.py
+├── tests/
+│   ├── __init__.py
+│   ├── unit/
+│   ├── integration/
+│   ├── e2e/
+│   └── fixtures/
+├── scripts/
+│   ├── setup_db.py
+│   ├── seed_data.py
+│   ├── run_migrations.py
+│   └── health_check.py
+├── docker/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   └── docker-compose.prod.yml
+├── docs/
+│   ├── architecture.md
+│   ├── api.md
+│   ├── agents.md
+│   └── deployment.md
+├── main.py
+├── requirements.txt
+├── pyproject.toml
+└── README.md
+```
+
+---
+
+# 🔧 CORE SYSTEM COMPONENTS
+
+## 1. `core/orchestrator.py` - Advanced Multi-Agent Orchestrator
+
+```python
+"""
+JAIPI-JUDICIAL V3 - Advanced Multi-Agent Orchestrator
+Production-grade orchestration with full observability and fault tolerance
+"""
+
+from __future__ import annotations
+
+import asyncio
+import uuid
+import time
+import traceback
+from typing import (
+    Dict, List, Optional, Any, Callable, Awaitable, 
+    TypeVar, Generic, Set, Tuple, Union, TYPE_CHECKING
+)
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum, auto
+from collections import defaultdict
+from contextlib import asynccontextmanager
+import logging
+import json
+import hashlib
+from abc import ABC, abstractmethod
+
+if TYPE_CHECKING:
+    from agents.base_agent import BaseAgent
+
+logger = logging.getLogger("JAIPI.Orchestrator")
+
+T = TypeVar('T')
+
+
+# ============================================================================
+# ENUMS AND CONSTANTS
+# ============================================================================
+
+class AgentPriority(Enum):
+    """Task priority levels with associated weights"""
+    CRITICAL = 1      # Legal violations, security breaches
+    HIGH = 2          # Regulatory deadlines, compliance alerts
+    MEDIUM = 3        # Standard monitoring, scheduled tasks
+    LOW = 4           # Background analysis, optimization
+    BACKGROUND = 5    # Learning, maintenance, cleanup
+    
+    @property
+    def timeout_multiplier(self) -> float:
+        """Higher priority = shorter timeout expectations"""
+        return {
+            AgentPriority.CRITICAL: 0.5,
+            AgentPriority.HIGH: 0.75,
+            AgentPriority.MEDIUM: 1.0,
+            AgentPriority.LOW: 1.5,
+            AgentPriority.BACKGROUND: 2.0
+        }[self]
+    
+    @property
+    def max_retries(self) -> int:
+        """Higher priority = more retry attempts"""
+        return {
+            AgentPriority.CRITICAL: 5,
+            AgentPriority.HIGH: 4,
+            AgentPriority.MEDIUM: 3,
+            AgentPriority.LOW: 2,
+            AgentPriority.BACKGROUND: 1
+        }[self]
+
+
+class TaskStatus(Enum):
+    """Comprehensive task lifecycle states"""
+    CREATED = "created"
+    QUEUED = "queued"
+    PENDING = "pending"
+    VALIDATING = "validating"
+    ASSIGNED = "assigned"
+    IN_PROGRESS = "in_progress"
+    WAITING_DEPENDENCY = "waiting_dependency"
+    PAUSED = "paused"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    TIMEOUT = "timeout"
+    CANCELLED = "cancelled"
+    ESCALATED = "escalated"
+    RETRYING = "retrying"
+    DEAD_LETTER = "dead_letter"
+
+
+class AgentStatus(Enum):
+    """Agent lifecycle states"""
+    INITIALIZING = "initializing"
+    READY = "ready"
+    BUSY = "busy"
+    OVERLOADED = "overloaded"
+    DEGRADED = "degraded"
+    ERROR = "error"
+    MAINTENANCE = "maintenance"
+    SHUTTING_DOWN = "shutting_down"
+    STOPPED = "stopped"
+
+
+class EventType(Enum):
+    """System event types"""
+    # Task events
+    TASK_CREATED = auto()
+    TASK_QUEUED = auto()
+    TASK_ASSIGNED = auto()
+    TASK_STARTED = auto()
+    TASK_PROGRESS = auto()
+    TASK_COMPLETED = auto()
+    TASK_FAILED = auto()
+    TASK_TIMEOUT = auto()
+    TASK_RETRYING = auto()
+    TASK_ESCALATED = auto()
+    TASK_CANCELLED = auto()
+    
+    # Agent events
+    AGENT_REGISTERED = auto()
+    AGENT_STARTED = auto()
+    AGENT_STOPPED = auto()
+    AGENT_HEALTH_CHECK = auto()
+    AGENT_OVERLOADED = auto()
+    AGENT_ERROR = auto()
+    AGENT_RECOVERED = auto()
+    
+    # System events
+    SYSTEM_STARTED = auto()
+    SYSTEM_STOPPED = auto()
+    SYSTEM_ERROR = auto()
+    METRICS_COLLECTED = auto()
+    
+    # Domain events
+    COMPLIANCE_VIOLATION = auto()
+    API_ALERT = auto()
+    SECURITY_ALERT = auto()
+    REGULATORY_DEADLINE = auto()
+
+
+# ============================================================================
+# DATA CLASSES
+# ============================================================================
+
+@dataclass
+class TaskContext:
+    """Execution context for a task"""
+    correlation_id: str
+    trace_id: str
+    span_id: str
+    parent_span_id: Optional[str] = None
+    user_id: Optional[str] = None
+    tenant_id: Optional[str] = None
+    source: str = "system"
+    tags: Dict[str, str] = field(default_factory=dict)
+    baggage: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class TaskMetrics:
+    """Metrics collected during task execution"""
+    created_at: datetime
+    queued_at: Optional[datetime] = None
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    queue_time_ms: float = 0.0
+    execution_time_ms: float = 0.0
+    total_time_ms: float = 0.0
+    retry_count: int = 0
+    memory_used_bytes: int = 0
+    cpu_time_ms: float = 0.0
+
+
+@dataclass
+class Task:
+    """
+    Comprehensive task representation with full lifecycle tracking
+    """
+    # Identity
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    idempotency_key: Optional[str] = None
+    
+    # Task definition
+    task_type: str = ""
+    payload: Dict[str, Any] = field(default_factory=dict)
+    priority: AgentPriority = AgentPriority.MEDIUM
+    
+    # Lifecycle
+    status: TaskStatus = TaskStatus.CREATED
+    created_at: datetime = field(default_factory=datetime.utcnow)
+    updated_at: datetime = field(default_factory=datetime.utcnow)
+    
+    # Assignment
+    assigned_agent: Optional[str] = None
+    assigned_at: Optional[datetime] = None
+    
+    # Results
+    result: Optional[Any] = None
+    error: Optional[str] = None
+    error_traceback: Optional[str] = None
+    
+    # Retry handling
+    retry_count: int = 0
+    max_retries: int = 3
+    retry_delay_seconds: float = 1.0
+    retry_backoff_multiplier: float = 2.0
+    last_retry_at: Optional[datetime] = None
+    
+    # Dependencies
+    dependencies: List[str] = field(default_factory=list)
+    dependents: List[str] = field(default_factory=list)
+    
+    # Timeout
+    timeout_seconds: float = 300.0
+    deadline: Optional[datetime] = None
+    
+    # Context
+    context: TaskContext = field(default_factory=lambda: TaskContext(
+        correlation_id=str(uuid.uuid4()),
+        trace_id=str(uuid.uuid4()),
+        span_id=str(uuid.uuid4())[:16]
+    ))
+    
+    # Metrics
+    metrics: TaskMetrics = field(default_factory=lambda: TaskMetrics(
+        created_at=datetime.utcnow()
+    ))
+    
+    # Metadata
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    tags: List[str] = field(default_factory=list)
+    
+    # Callbacks
+    on_complete: Optional[str] = None  # Task ID to trigger on completion
+    on_failure: Optional[str] = None   # Task ID to trigger on failure
+    
+    def __post_init__(self):
+        if self.deadline is None:
+            self.deadline = self.created_at + timedelta(seconds=self.timeout_seconds)
+        if self.max_retries == 3:  # Default, override with priority
+            self.max_retries = self.priority.max_retries
+    
+    @property
+    def is_terminal(self) -> bool:
+        """Check if task is in terminal state"""
+        return self.status in {
+            TaskStatus.COMPLETED,
+            TaskStatus.FAILED,
+            TaskStatus.CANCELLED,
+            TaskStatus.DEAD_LETTER
+        }
+    
+    @property
+    def is_expired(self) -> bool:
+        """Check if task has exceeded deadline"""
+        return datetime.utcnow() > self.deadline if self.deadline else False
+    
+    @property
+    def can_retry(self) -> bool:
+        """Check if task can be retried"""
+        return (
+            self.retry_count < self.max_retries and
+            self.status not in {TaskStatus.CANCELLED, TaskStatus.DEAD_LETTER}
+        )
+    
+    @property
+    def next_retry_delay(self) -> float:
+        """Calculate next retry delay with exponential backoff"""
+        return self.retry_delay_seconds * (
+            self.retry_backoff_multiplier ** self.retry_count
+        )
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Serialize task to dictionary"""
+        return {
+            "id": self.id,
+            "task_type": self.task_type,
+            "payload": self.payload,
+            "priority": self.priority.name,
+            "status": self.status.value,
+            "created_at": self.created_at.isoformat(),
+            "assigned_agent": self.assigned_agent,
+            "retry_count": self.retry_count,
+            "error": self.error,
+            "metadata": self.metadata
+        }
+    
+    def generate_idempotency_key(self) -> str:
+        """Generate idempotency key from task content"""
+        content = json.dumps({
+            "type": self.task_type,
+            "payload": self.payload
+        }, sort_keys=True)
+        return hashlib.sha256(content.encode()).hexdigest()[:32]
+
+
+@dataclass
+class AgentCapability:
+    """Defines what an agent can do"""
+    name: str
+    description: str
+    task_types: List[str]
+    version: str = "1.0.0"
+    
+    # Capacity
+    max_concurrent_tasks: int = 5
+    tasks_per_second_limit: float = 10.0
+    
+    # Performance expectations
+    avg_processing_time_ms: float = 1000.0
+    p95_processing_time_ms: float = 3000.0
+    p99_processing_time_ms: float = 5000.0
+    
+    # Priority range this agent handles
+    min_priority: AgentPriority = AgentPriority.BACKGROUND
+    max_priority: AgentPriority = AgentPriority.CRITICAL
+    
+    # Resource requirements
+    memory_mb: int = 256
+    cpu_cores: float = 0.5
+    
+    # Feature flags
+    supports_batch: bool = False
+    supports_streaming: bool = False
+    supports_cancellation: bool = True
+    requires_gpu: bool = False
+    
+    # Dependencies
+    required_services: List[str] = field(default_factory=list)
+    optional_services: List[str] = field(default_factory=list)
+    
+    def can_handle(self, task: Task) -> bool:
+        """Check if this capability can handle a task"""
+        return (
+            task.task_type in self.task_types and
+            self.min_priority.value >= task.priority.value >= self.max_priority.value
+        )
+
+
+@dataclass
+class AgentMetrics:
+    """Runtime metrics for an agent"""
+    # Counters
+    tasks_received: int = 0
+    tasks_completed: int = 0
+    tasks_failed: int = 0
+    tasks_timeout: int = 0
+    tasks_rejected: int = 0
+    
+    # Timing
+    total_processing_time_ms: float = 0.0
+    min_processing_time_ms: float = float('inf')
+    max_processing_time_ms: float = 0.0
+    
+    # Current state
+    current_tasks: int = 0
+    queue_depth: int = 0
+    
+    # Health
+    last_health_check: Optional[datetime] = None
+    consecutive_failures: int = 0
+    last_error: Optional[str] = None
+    last_error_at: Optional[datetime] = None
+    
+    # Calculated
+    @property
+    def avg_processing_time_ms(self) -> float:
+        if self.tasks_completed == 0:
+            return 0.0
+        return self.total_processing_time_ms / self.tasks_completed
+    
+    @property
+    def success_rate(self) -> float:
+        total = self.tasks_completed + self.tasks_failed
+        if total == 0:
+            return 1.0
+        return self.tasks_completed / total
+    
+    @property
+    def utilization(self) -> float:
+        # Simplified - would need capacity info
+        return min(self.current_tasks / 5.0, 1.0)
+
+
+@dataclass
+class SystemEvent:
+    """System event for event sourcing and notifications"""
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    event_type: EventType = EventType.SYSTEM_STARTED
+    timestamp: datetime = field(default_factory=datetime.utcnow)
+    source: str = "orchestrator"
+    correlation_id: Optional[str] = None
+    
+    # Event data
+    data: Dict[str, Any] = field(default_factory=dict)
+    
+    # Metadata
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "id": self.id,
+            "event_type": self.event_type.name,
+            "timestamp": self.timestamp.isoformat(),
+            "source": self.source,
+            "correlation_id": self.correlation_id,
+            "data": self.data,
+            "metadata": self.metadata
+        }
+
+
+# ============================================================================
+# CIRCUIT BREAKER
+# ============================================================================
+
+class CircuitState(Enum):
+    CLOSED = "closed"
+    OPEN = "open"
+    HALF_OPEN = "half_open"
+
+
+@dataclass
+class CircuitBreaker:
+    """Circuit breaker for fault tolerance"""
+    name: str
+    failure_threshold: int = 5
+    success_threshold: int = 2
+    timeout_seconds: float = 30.0
+    
+    state: CircuitState = CircuitState.CLOSED
+    failure_count: int = 0
+    success_count: int = 0
+    last_failure_time: Optional[datetime] = None
+    last_state_change: datetime = field(default_factory=datetime.utcnow)
+    
+    def record_success(self):
+        """Record successful operation"""
+        if self.state == CircuitState.HALF_OPEN:
+            self.success_count += 1
+            if self.success_count >= self.success_threshold:
+                self._transition_to(CircuitState.CLOSED)
+        elif self.state == CircuitState.CLOSED:
+            self.failure_count = 0
+    
+    def record_failure(self):
+        """Record failed operation"""
+        self.failure_count += 1
+        self.last_failure_time = datetime.utcnow()
+        
+        if self.state == CircuitState.HALF_OPEN:
+            self._transition_to(CircuitState.OPEN)
+        elif self.state == CircuitState.CLOSED:
+            if self.failure_count >= self.failure_threshold:
+                self._transition_to(CircuitState.OPEN)
+    
+    def can_execute(self) -> bool:
+        """Check if operations can be executed"""
+        if self.state == CircuitState.CLOSED:
+            return True
+        
+        if self.state == CircuitState.OPEN:
+            # Check if timeout has passed
+            if self.last_failure_time:
+                elapsed = (datetime.utcnow() - self.last_failure_time).total_seconds()
+                if elapsed >= self.timeout_seconds:
+                    self._transition_to(CircuitState.HALF_OPEN)
+                    return True
+            return False
+        
+        # HALF_OPEN - allow limited requests
+        return True
+    
+    def _transition_to(self, new_state: CircuitState):
+        """Transition to new state"""
+        self.state = new_state
+        self.last_state_change = datetime.utcnow()
+        if new_state == CircuitState.CLOSED:
+            self.failure_count = 0
+            self.success_count = 0
+        elif new_state == CircuitState.HALF_OPEN:
+            self.success_count = 0
+
+
+# ============================================================================
+# RATE LIMITER
+# ============================================================================
+
+class RateLimiter:
+    """Token bucket rate limiter"""
+    
+    def __init__(
+        self,
+        rate: float,  # tokens per second
+        capacity: int  # max tokens
+    ):
+        self.rate = rate
+        self.capacity = capacity
+        self.tokens = capacity
+        self.last_update = time.monotonic()
+        self._lock = asyncio.Lock()
+    
+    async def acquire(self, tokens: int = 1) -> bool:
+        """Try to acquire tokens"""
+        async with self._lock:
+            now = time.monotonic()
+            elapsed = now - self.last_update
+            self.last_update = now
+            
+            # Add tokens based on elapsed time
+            self.tokens = min(
+                self.capacity,
+                self.tokens + elapsed * self.rate
+            )
+            
+            if self.tokens >= tokens:
+                self.tokens -= tokens
+                return True
+            return False
+    
+    async def wait_and_acquire(self, tokens: int = 1, timeout: float = 30.0) -> bool:
+        """Wait until tokens are available"""
+        start = time.monotonic()
+        while time.monotonic() - start < timeout:
+            if await self.acquire(tokens):
+                return True
+            await asyncio.sleep(0.1)
+        return False
+
+
+# ============================================================================
+# TASK QUEUE
+# ============================================================================
+
+class PriorityTaskQueue:
+    """Thread-safe priority queue for tasks"""
+    
+    def __init__(self, maxsize: int = 0):
+        self._queue: asyncio.PriorityQueue = asyncio.PriorityQueue(maxsize=maxsize)
+        self._task_ids: Set[str] = set()
+        self._lock = asyncio.Lock()
+    
+    async def put(self, task: Task):
+        """Add task to queue"""
+        async with self._lock:
+            if task.id in self._task_ids:
+                return  # Deduplicate
+            
+            # Priority tuple: (priority_value, timestamp, task_id)
+            priority_key = (
+                task.priority.value,
+                task.created_at.timestamp(),
+                task.id
+            )
+            await self._queue.put((priority_key, task))
+            self._task_ids.add(task.id)
+            task.status = TaskStatus.QUEUED
+            task.metrics.queued_at = datetime.utcnow()
+    
+    async def get(self, timeout: float = None) -> Optional[Task]:
+        """Get highest priority task"""
+        try:
+            if timeout:
+                priority_key, task = await asyncio.wait_for(
+                    self._queue.get(),
+                    timeout=timeout
+                )
+            else:
+                priority_key, task = await self._queue.get()
+            
+            async with self._lock:
+                self._task_ids.discard(task.id)
+            
+            return task
+        except asyncio.TimeoutError:
+            return None
+    
+    def qsize(self) -> int:
+        return self._queue.qsize()
+    
+    def empty(self) -> bool:
+        return self._queue.empty()
+    
+    async def remove(self, task_id: str) -> bool:
+        """Remove task from queue (expensive operation)"""
+        async with self._lock:
+            if task_id in self._task_ids:
+                self._task_ids.discard(task_id)
+                return True
+            return False
+
+
+# ============================================================================
+# EVENT EMITTER
+# ============================================================================
+
+EventHandler = Callable[[SystemEvent], Awaitable[None]]
+
+
+class EventEmitter:
+    """Async event emitter with pattern matching"""
+    
+    def __init__(self):
+        self._handlers: Dict[EventType, List[EventHandler]] = defaultdict(list)
+        self._wildcard_handlers: List[EventHandler] = []
+        self._event_history: List[SystemEvent] = []
+        self._max_history = 10000
+        self._lock = asyncio.Lock()
+    
+    def on(self, event_type: EventType, handler: EventHandler):
+        """Register handler for specific event type"""
+        self._handlers[event_type].append(handler)
+    
+    def on_all(self, handler: EventHandler):
+        """Register handler for all events"""
+        self._wildcard_handlers.append(handler)
+    
+    def off(self, event_type: EventType, handler: EventHandler):
+        """Remove handler"""
+        if handler in self._handlers[event_type]:
+            self._handlers[event_type].remove(handler)
+    
+    async def emit(self, event: SystemEvent):
+        """Emit event to all registered handlers"""
+        # Store in history
+        async with self._lock:
+            self._event_history.append(event)
+            if len(self._event_history) > self._max_history:
+                self._event_history = self._event_history[-self._max_history:]
+        
+        # Collect handlers
+        handlers = (
+            self._handlers.get(event.event_type, []) +
+            self._wildcard_handlers
+        )
+        
+        # Execute handlers concurrently
+        if handlers:
+            await asyncio.gather(
+                *[self._safe_call(h, event) for h in handlers],
+                return_exceptions=True
+            )
+    
+    async def _safe_call(self, handler: EventHandler, event: SystemEvent):
+        """Safely call handler with error handling"""
+        try:
+            await handler(event)
+        except Exception as e:
+            logger.error(f"Event handler error: {e}")
+    
+    def get_history(
+        self,
+        event_type: Optional[EventType] = None,
+        limit: int = 100
+    ) -> List[SystemEvent]:
+        """Get event history"""
+        history = self._event_history
+        if event_type:
+            history = [e for e in history if e.event_type == event_type]
+        return history[-limit:]
+
+
+# ============================================================================
+# AGENT REGISTRY
+# ============================================================================
+
+class AgentRegistry:
+    """Registry for managing agents and their capabilities"""
+    
+    def __init__(self):
+        self._agents: Dict[str, 'BaseAgent'] = {}
+        self._capabilities: Dict[str, AgentCapability] = {}
+        self._metrics: Dict[str, AgentMetrics] = {}
+        self._circuit_breakers: Dict[str, CircuitBreaker] = {}
+        
+        # Indexes
+        self._task_type_index: Dict[str, List[str]] = defaultdict(list)
+        self._status_index: Dict[AgentStatus, Set[str]] = defaultdict(set)
+        
+        self._lock = asyncio.Lock()
+    
+    async def register(
+        self,
+        agent: 'BaseAgent',
+        capability: AgentCapability
+    ):
+        """Register an agent with its capability"""
+        async with self._lock:
+            agent_id = agent.agent_id
+            
+            self._agents[agent_id] = agent
+            self._capabilities[agent_id] = capability
+            self._metrics[agent_id] = AgentMetrics()
+            self._circuit_breakers[agent_id] = CircuitBreaker(name=agent_id)
+            
+            # Build indexes
+            for task_type in capability.task_types:
+                self._task_type_index[task_type].append(agent_id)
+            
+            self._status_index[AgentStatus.INITIALIZING].add(agent_id)
+            
+            logger.info(
+                f"Registered agent: {agent_id} "
+                f"[{capability.name}] "
+                f"tasks: {capability.task_types}"
+            )
+    
+    async def unregister(self, agent_id: str):
+        """Unregister an agent"""
+        async with self._lock:
+            if agent_id not in self._agents:
+                return
+            
+            capability = self._capabilities.get(agent_id)
+            if capability:
+                for task_type in capability.task_types:
+                    if agent_id in self._task_type_index[task_type]:
+                        self._task_type_index[task_type].remove(agent_id)
+            
+            for status_set in self._status_index.values():
+                status_set.discard(agent_id)
+            
+            del self._agents[agent_id]
+            del self._capabilities[agent_id]
+            del self._metrics[agent_id]
+            del self._circuit_breakers[agent_id]
+            
+            logger.info(f"Unregistered agent: {agent_id}")
+    
+    def get_agent(self, agent_id: str) -> Optional['BaseAgent']:
+        """Get agent by ID"""
+        return self._agents.get(agent_id)
+    
+    def get_agents_for_task_type(self, task_type: str) -> List['BaseAgent']:
+        """Get all agents that can handle a task type"""
+        agent_ids = self._task_type_index.get(task_type, [])
+        return [self._agents[aid] for aid in agent_ids if aid in self._agents]
+    
+    def get_capability(self, agent_id: str) -> Optional[AgentCapability]:
+        """Get agent capability"""
+        return self._capabilities.get(agent_id)
+    
+    def get_metrics(self, agent_id: str) -> Optional[AgentMetrics]:
+        """Get agent metrics"""
+        return self._metrics.get(agent_id)
+    
+    def get_circuit_breaker(self, agent_id: str) -> Optional[CircuitBreaker]:
+        """Get agent circuit breaker"""
+        return self._circuit_breakers.get(agent_id)
+    
+    async def update_status(self, agent_id: str, status: AgentStatus):
+        """Update agent status"""
+        async with self._lock:
+            # Remove from old status
+            for status_set in self._status_index.values():
+                status_set.discard(agent_id)
+            
+            # Add to new status
+            self._status_index[status].add(agent_id)
+    
+    def get_agents_by_status(self, status: AgentStatus) -> List['BaseAgent']:
+        """Get agents with specific status"""
+        agent_ids = self._status_index.get(status, set())
+        return [self._agents[aid] for aid in agent_ids if aid in self._agents]
+    
+    def get_all_agents(self) -> List['BaseAgent']:
+        """Get all registered agents"""
+        return list(self._agents.values())
+    
+    def get_summary(self) -> Dict[str, Any]:
+        """Get registry summary"""
+        return {
+            "total_agents": len(self._agents),
+            "by_status": {
+                status.value: len(agents)
+                for status, agents in self._status_index.items()
+            },
+            "task_types": list(self._task_type_index.keys()),
+            "agents": [
+                {
+                    "id": aid,
+                    "capability": self._capabilities[aid].name,
+                    "metrics": {
+                        "completed": self._metrics[aid].tasks_completed,
+                        "failed": self._metrics[aid].tasks_failed,
+                        "current": self._metrics[aid].current_tasks
+                    }
+                }
+                for aid in self._agents
+            ]
+        }
+
+
+# ============================================================================
+# TASK ROUTER
+# ============================================================================
+
+class TaskRouter:
+    """Routes tasks to appropriate agents using various strategies"""
+    
+    class Strategy(Enum):
+        ROUND_ROBIN = "round_robin"
+        LEAST_LOADED = "least_loaded"
+        FASTEST = "fastest"
+        RANDOM = "random"
+        WEIGHTED = "weighted"
+        AFFINITY = "affinity"
+    
+    def __init__(self, registry: AgentRegistry):
+        self.registry = registry
+        self.strategy = self.Strategy.LEAST_LOADED
+        
+        # Round robin state
+        self._rr_counters: Dict[str, int] = defaultdict(int)
+        
+        # Affinity mapping (task_type -> preferred agent)
+        self._affinity_map: Dict[str, str] = {}
+    
+    async def route(self, task: Task) -> Optional['BaseAgent']:
+        """Route task to best available agent"""
+        candidates = self.registry.get_agents_for_task_type(task.task_type)
+        
+        if not candidates:
+            logger.warning(f"No agents available for task type: {task.task_type}")
+            return None
+        
+        # Filter by availability
+        available = []
+        for agent in candidates:
+            cb = self.registry.get_circuit_breaker(agent.agent_id)
+            if cb and not cb.can_execute():
+                continue
+            
+            if not agent.is_available():
+                continue
+            
+            available.append(agent)
+        
+        if not available:
+            logger.warning(f"No available agents for task: {task.id}")
+            return None
+        
+        # Apply routing strategy
+        if self.strategy == self.Strategy.ROUND_ROBIN:
+            return self._round_robin(task.task_type, available)
+        elif self.strategy == self.Strategy.LEAST_LOADED:
+            return self._least_loaded(available)
+        elif self.strategy == self.Strategy.FASTEST:
+            return self._fastest(available)
+        elif self.strategy == self.Strategy.AFFINITY:
+            return self._with_affinity(task, available)
+        else:
+            return available[0]
+    
+    def _round_robin(
+        self,
+        task_type: str,
+        agents: List['BaseAgent']
+    ) -> 'BaseAgent':
+        """Round robin selection"""
+        idx = self._rr_counters[task_type] % len(agents)
+        self._rr_counters[task_type] += 1
+        return agents[idx]
+    
+    def _least_loaded(self, agents: List['BaseAgent']) -> 'BaseAgent':
+        """Select least loaded agent"""
+        return min(agents, key=lambda a: a.current_load)
+    
+    def _fastest(self, agents: List['BaseAgent']) -> 'BaseAgent':
+        """Select agent with fastest average processing time"""
+        def get_avg_time(agent):
+            metrics = self.registry.get_metrics(agent.agent_id)
+            if metrics and metrics.tasks_completed > 0:
+                return metrics.avg_processing_time_ms
+            return float('inf')
+        
+        return min(agents, key=get_avg_time)
+    
+    def _with_affinity(
+        self,
+        task: Task,
+        agents: List['BaseAgent']
+    ) -> 'BaseAgent':
+        """Select with task affinity preference"""
+        preferred_id = self._affinity_map.get(task.task_type)
+        if preferred_id:
+            for agent in agents:
+                if agent.agent_id == preferred_id:
+                    return agent
+        
+        # Fallback to least loaded
+        return self._least_loaded(agents)
+    
+    def set_affinity(self, task_type: str, agent_id: str):
+        """Set task type affinity to agent"""
+        self._affinity_map[task_type] = agent_id
+
+
+# ============================================================================
+# DEPENDENCY RESOLVER
+# ============================================================================
+
+class DependencyResolver:
+    """Resolves task dependencies using topological sort"""
+    
+    def __init__(self):
+        self._completed_tasks: Dict[str, Any] = {}
+        self._lock = asyncio.Lock()
+    
+    async def mark_completed(self, task_id: str, result: Any):
+        """Mark task as completed"""
+        async with self._lock:
+            self._completed_tasks[task_id] = result
+    
+    async def are_dependencies_met(self, task: Task) -> bool:
+        """Check if all dependencies are completed"""
+        if not task.dependencies:
+            return True
+        
+        async with self._lock:
+            for dep_id in task.dependencies:
+                if dep_id not in self._completed_tasks:
+                    return False
+        return True
+    
+    async def get_dependency_results(self, task: Task) -> Dict[str, Any]:
+        """Get results from dependency tasks"""
+        results = {}
+        async with self._lock:
+            for dep_id in task.dependencies:
+                if dep_id in self._completed_tasks:
+                    results[dep_id] = self._completed_tasks[dep_id]
+        return results
+    
+    def topological_sort(self, tasks: List[Task]) -> List[Task]:
+        """Sort tasks by dependency order"""
+        # Build adjacency list
+        graph: Dict[str, List[str]] = defaultdict(list)
+        in_degree: Dict[str, int] = {}
+        task_map: Dict[str, Task] = {}
+        
+        for task in tasks:
+            task_map[task.id] = task
+            in_degree[task.id] = len(task.dependencies)
+            for dep_id in task.dependencies:
+                graph[dep_id].append(task.id)
+        
+        # Kahn's algorithm
+        queue = [tid for tid, deg in in_degree.items() if deg == 0]
+        sorted_ids = []
+        
+        while queue:
+            current = queue.pop(0)
+            sorted_ids.append(current)
+            
+            for dependent in graph[current]:
+                in_degree[dependent] -= 1
+                if in_degree[dependent] == 0:
+                    queue.append(dependent)
+        
+        # Check for cycles
+        if len(sorted_ids) != len(tasks):
+            raise ValueError("Circular dependency detected")
+        
+        return [task_map[tid] for tid in sorted_ids]
+
+
+# ============================================================================
+# METRICS COLLECTOR
+# ============================================================================
+
+@dataclass
+class OrchestratorMetrics:
+    """Aggregated orchestrator metrics"""
+    # Task metrics
+    tasks_submitted: int = 0
+    tasks_completed: int = 0
+    tasks_failed: int = 0
+    tasks_timeout: int = 0
+    tasks_cancelled: int = 0
+    tasks_retried: int = 0
+    
+    # Queue metrics
+    current_queue_size: int = 0
+    peak_queue_size: int = 0
+    
+    # Timing
+    avg_queue_time_ms: float = 0.0
+    avg_execution_time_ms: float = 0.0
+    avg_total_time_ms: float = 0.0
+    
+    # Throughput
+    tasks_per_second: float = 0.0
+    
+    # Errors
+    total_errors: int = 0
+    
+    # Agent metrics
+    active_agents: int = 0
+    total_agents: int = 0
+    
+    # Calculated
+    @property
+    def success_rate(self) -> float:
+        total = self.tasks_completed + self.tasks_failed
+        return self.tasks_completed / total if total > 0 else 1.0
+
+
+class MetricsCollector:
+    """Collects and aggregates system metrics"""
+    
+    def __init__(self):
+        self._metrics = OrchestratorMetrics()
+        self._timing_samples: List[Tuple[str, float]] = []
+        self._max_samples = 10000
+        self._start_time = datetime.utcnow()
+        self._lock = asyncio.Lock()
+    
+    async def record_task_submitted(self):
+        async with self._lock:
+            self._metrics.tasks_submitted += 1
+    
+    async def record_task_completed(self, execution_time_ms: float):
+        async with self._lock:
+            self._metrics.tasks_completed += 1
+            self._timing_samples.append(("execution", execution_time_ms))
+            self._trim_samples()
+    
+    async def record_task_failed(self):
+        async with self._lock:
+            self._metrics.tasks_failed += 1
+            self._metrics.total_errors += 1
+    
+    async def record_task_timeout(self):
+        async with self._lock:
+            self._metrics.tasks_timeout += 1
+    
+    async def record_task_retry(self):
+        async with self._lock:
+            self._metrics.tasks_retried += 1
+    
+    async def update_queue_size(self, size: int):
+        async with self._lock:
+            self._metrics.current_queue_size = size
+            self._metrics.peak_queue_size = max(
+                self._metrics.peak_queue_size,
+                size
+            )
+    
+    async def update_agent_counts(self, active: int, total: int):
+        async with self._lock:
+            self._metrics.active_agents = active
+            self._metrics.total_agents = total
+    
+    def _trim_samples(self):
+        if len(self._timing_samples) > self._max_samples:
+            self._timing_samples = self._timing_samples[-self._max_samples:]
+    
+    async def get_metrics(self) -> OrchestratorMetrics:
+        """Get current metrics with calculations"""
+        async with self._lock:
+            # Calculate averages
+            execution_times = [
+                t for name, t in self._timing_samples
+                if name == "execution"
+            ]
+            if execution_times:
+                self._metrics.avg_execution_time_ms = (
+                    sum(execution_times) / len(execution_times)
+                )
+            
+            # Calculate throughput
+            elapsed = (datetime.utcnow() - self._start_time).total_seconds()
+            if elapsed > 0:
+                self._metrics.tasks_per_second = (
+                    self._metrics.tasks_completed / elapsed
+                )
+            
+            return self._metrics
+    
+    def get_metrics_dict(self) -> Dict[str, Any]:
+        """Get metrics as dictionary"""
+        return {
+            "tasks_submitted": self._metrics.tasks_submitted,
+            "tasks_completed": self._metrics.tasks_completed,
+            "tasks_failed": self._metrics.tasks_failed,
+            "tasks_timeout": self._metrics.tasks_timeout,
+            "tasks_retried": self._metrics.tasks_retried,
+            "success_rate": self._metrics.success_rate,
+            "current_queue_size": self._metrics.current_queue_size,
+            "peak_queue_size": self._metrics.peak_queue_size,
+            "avg_execution_time_ms": self._metrics.avg_execution_time_ms,
+            "tasks_per_second": self._metrics.tasks_per_second,
+            "active_agents": self._metrics.active_agents,
+            "total_agents": self._metrics.total_agents
+        }
+
+
+# ============================================================================
+# DEAD LETTER QUEUE
+# ============================================================================
+
+class DeadLetterQueue:
+    """Stores tasks that have permanently failed"""
+    
+    def __init__(self, max_size: int = 10000):
+        self._queue: List[Tuple[Task, str, datetime]] = []
+        self._max_size = max_size
+        self._lock = asyncio.Lock()
+    
+    async def add(self, task: Task, reason: str):
+        """Add task to dead letter queue"""
+        async with self._lock:
+            task.status = TaskStatus.DEAD_LETTER
+            self._queue.append((task, reason, datetime.utcnow()))
+            
+            # Trim if over max size
+            if len(self._queue) > self._max_size:
+                self._queue = self._queue[-self._max_size:]
+            
+            logger.warning(f"Task {task.id} moved to dead letter queue: {reason}")
+    
+    async def get_all(self) -> List[Tuple[Task, str, datetime]]:
+        """Get all dead letter tasks"""
+        async with self._lock:
+            return list(self._queue)
+    
+    async def retry(self, task_id: str) -> Optional[Task]:
+        """Remove task from DLQ for retry"""
+        async with self._lock:
+            for i, (task, reason, added_at) in enumerate(self._queue):
+                if task.id == task_id:
+                    self._queue.pop(i)
+                    task.status = TaskStatus.PENDING
+                    task.retry_count = 0
+                    return task
+            return None
+    
+    def size(self) -> int:
+        return len(self._queue)
+
+
+# ============================================================================
+# MAIN ORCHESTRATOR
+# ============================================================================
+
+class JudicialOrchestrator:
+    """
+    JAIPI-JUDICIAL V3 Multi-Agent Orchestrator
+    
+    Production-grade orchestration system for coordinating
+    legal compliance and government API monitoring agents.
+    
+    Features:
+    - Priority-based task queuing
+    - Dependency resolution
+    - Circuit breaker pattern
+    - Rate limiting
+    - Dead letter queue
+    - Full observability
+    - Graceful shutdown
+    """
+    
+    def __init__(self, config: Dict[str, Any] = None):
+        self.config = config or {}
+        
+        # Core components
+        self.registry = AgentRegistry()
+        self.task_queue = PriorityTaskQueue(
+            maxsize=self.config.get("max_queue_size", 10000)
+        )
+        self.router = TaskRouter(self.registry)
+        self.dependency_resolver = DependencyResolver()
+        self.event_emitter = EventEmitter()
+        self.metrics_collector = MetricsCollector()
+        self.dead_letter_queue = DeadLetterQueue()
+        
+        # Rate limiter
+        self.rate_limiter = RateLimiter(
+            rate=self.config.get("max_tasks_per_second", 100),
+            capacity=self.config.get("rate_limit_capacity", 200)
+        )
+        
+        # Task tracking
+        self._active_tasks: Dict[str, Task] = {}
+        self._completed_tasks: Dict[str, Task] = {}
+        self._task_futures: Dict[str, asyncio.Future] = {}
+        
+        # Worker pools
+        self._dispatcher_workers: List[asyncio.Task] = []
+        self._num_dispatchers = self.config.get("num_dispatchers", 4)
+        
+        # Control
+        self._running = False
+        self._shutdown_event = asyncio.Event()
+        self._startup_complete = asyncio.Event()
+        
+        # Locks
+        self._task_lock = asyncio.Lock()
+        
+        logger.info("JudicialOrchestrator V3 initialized")
+    
+    # ========================================================================
+    # LIFECYCLE
+    # ========================================================================
+    
+    async def start(self):
+        """Start the orchestrator and all components"""
+        logger.info("Starting JAIPI-JUDICIAL V3 Orchestrator...")
+        self._running = True
+        
+        # Emit startup event
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.SYSTEM_STARTED,
+            data={"config": self.config}
+        ))
+        
+        # Start all registered agents
+        for agent in self.registry.get_all_agents():
+            try:
+                await agent.start()
+                await self.registry.update_status(
+                    agent.agent_id,
+                    AgentStatus.READY
+                )
+            except Exception as e:
+                logger.error(f"Failed to start agent {agent.agent_id}: {e}")
+                await self.registry.update_status(
+                    agent.agent_id,
+                    AgentStatus.ERROR
+                )
+        
+        # Start worker tasks
+        self._dispatcher_workers = [
+            asyncio.create_task(self._task_dispatcher(i))
+            for i in range(self._num_dispatchers)
+        ]
+        
+        # Start background tasks
+        asyncio.create_task(self._health_monitor())
+        asyncio.create_task(self._metrics_aggregator())
+        asyncio.create_task(self._timeout_checker())
+        asyncio.create_task(self._dependency_checker())
+        asyncio.create_task(self._cleanup_worker())
+        
+        self._startup_complete.set()
+        logger.info(f"Orchestrator started with {self._num_dispatchers} dispatchers")
+        
+        # Wait for shutdown signal
+        await self._shutdown_event.wait()
+    
+    async def shutdown(self, timeout: float = 30.0):
+        """Graceful shutdown"""
+        logger.info("Initiating graceful shutdown...")
+        self._running = False
+        
+        # Cancel dispatcher workers
+        for worker in self._dispatcher_workers:
+            worker.cancel()
+        
+        await asyncio.gather(
+            *self._dispatcher_workers,
+            return_exceptions=True
+        )
+        
+        # Wait for active tasks to complete (with timeout)
+        if self._active_tasks:
+            logger.info(f"Waiting for {len(self._active_tasks)} active tasks...")
+            try:
+                await asyncio.wait_for(
+                    self._wait_for_active_tasks(),
+                    timeout=timeout
+                )
+            except asyncio.TimeoutError:
+                logger.warning("Timeout waiting for tasks, forcing shutdown")
+        
+        # Stop all agents
+        for agent in self.registry.get_all_agents():
+            try:
+                await agent.stop()
+            except Exception as e:
+                logger.error(f"Error stopping agent {agent.agent_id}: {e}")
+        
+        # Emit shutdown event
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.SYSTEM_STOPPED,
+            data={"active_tasks": len(self._active_tasks)}
+        ))
+        
+        self._shutdown_event.set()
+        logger.info("Orchestrator shutdown complete")
+    
+    async def _wait_for_active_tasks(self):
+        """Wait for all active tasks to complete"""
+        while self._active_tasks:
+            await asyncio.sleep(0.1)
+    
+    # ========================================================================
+    # AGENT MANAGEMENT
+    # ========================================================================
+    
+    async def register_agent(
+        self,
+        agent: 'BaseAgent',
+        capability: AgentCapability
+    ):
+        """Register an agent with the orchestrator"""
+        await self.registry.register(agent, capability)
+        agent.set_orchestrator(self)
+        
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.AGENT_REGISTERED,
+            data={
+                "agent_id": agent.agent_id,
+                "capability": capability.name,
+                "task_types": capability.task_types
+            }
+        ))
+    
+    async def unregister_agent(self, agent_id: str):
+        """Unregister an agent"""
+        await self.registry.unregister(agent_id)
+    
+    # ========================================================================
+    # TASK SUBMISSION
+    # ========================================================================
+    
+    async def submit_task(self, task: Task) -> str:
+        """Submit a task for processing"""
+        # Rate limiting
+        if not await self.rate_limiter.acquire():
+            raise RuntimeError("Rate limit exceeded")
+        
+        # Validate task
+        if not task.task_type:
+            raise ValueError("Task type is required")
+        
+        # Check for duplicate (idempotency)
+        if task.idempotency_key:
+            existing = await self._find_by_idempotency_key(task.idempotency_key)
+            if existing:
+                logger.info(f"Duplicate task detected: {task.idempotency_key}")
+                return existing.id
+        
+        # Generate idempotency key if not provided
+        if not task.idempotency_key:
+            task.idempotency_key = task.generate_idempotency_key()
+        
+        async with self._task_lock:
+            self._active_tasks[task.id] = task
+            self._task_futures[task.id] = asyncio.get_event_loop().create_future()
+        
+        # Queue the task
+        await self.task_queue.put(task)
+        
+        # Update metrics
+        await self.metrics_collector.record_task_submitted()
+        await self.metrics_collector.update_queue_size(self.task_queue.qsize())
+        
+        # Emit event
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.TASK_CREATED,
+            correlation_id=task.context.correlation_id,
+            data=task.to_dict()
+        ))
+        
+        logger.debug(
+            f"Task submitted: {task.id} [{task.task_type}] "
+            f"priority={task.priority.name}"
+        )
+        
+        return task.id
+    
+    async def submit_batch(self, tasks: List[Task]) -> List[str]:
+        """Submit multiple tasks, respecting dependencies"""
+        # Sort by dependencies
+        sorted_tasks = self.dependency_resolver.topological_sort(tasks)
+        
+        task_ids = []
+        for task in sorted_tasks:
+            task_id = await self.submit_task(task)
+            task_ids.append(task_id)
+        
+        return task_ids
+    
+    async def _find_by_idempotency_key(self, key: str) -> Optional[Task]:
+        """Find task by idempotency key"""
+        async with self._task_lock:
+            for task in self._active_tasks.values():
+                if task.idempotency_key == key:
+                    return task
+            for task in self._completed_tasks.values():
+                if task.idempotency_key == key:
+                    return task
+        return None
+    
+    # ========================================================================
+    # TASK DISPATCHING
+    # ========================================================================
+    
+    async def _task_dispatcher(self, worker_id: int):
+        """Worker that dispatches tasks to agents"""
+        logger.info(f"Dispatcher worker {worker_id} started")
+        
+        while self._running:
+            try:
+                # Get task from queue
+                task = await self.task_queue.get(timeout=1.0)
+                if not task:
+                    continue
+                
+                # Check if task is expired
+                if task.is_expired:
+                    await self._handle_timeout(task)
+                    continue
+                
+                # Check dependencies
+                if not await self.dependency_resolver.are_dependencies_met(task):
+                    task.status = TaskStatus.WAITING_DEPENDENCY
+                    # Re-queue with delay
+                    await asyncio.sleep(0.5)
+                    await self.task_queue.put(task)
+                    continue
+                
+                # Route to agent
+                agent = await self.router.route(task)
+                if not agent:
+                    # No available agent, re-queue
+                    await asyncio.sleep(0.5)
+                    await self.task_queue.put(task)
+                    continue
+                
+                # Assign and execute
+                task.status = TaskStatus.ASSIGNED
+                task.assigned_agent = agent.agent_id
+                task.assigned_at = datetime.utcnow()
+                
+                await self.event_emitter.emit(SystemEvent(
+                    event_type=EventType.TASK_ASSIGNED,
+                    correlation_id=task.context.correlation_id,
+                    data={
+                        "task_id": task.id,
+                        "agent_id": agent.agent_id
+                    }
+                ))
+                
+                # Execute task (non-blocking)
+                asyncio.create_task(
+                    self._execute_task(agent, task)
+                )
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Dispatcher {worker_id} error: {e}")
+                await asyncio.sleep(1)
+        
+        logger.info(f"Dispatcher worker {worker_id} stopped")
+    
+    async def _execute_task(self, agent: 'BaseAgent', task: Task):
+        """Execute a task on an agent with full lifecycle management"""
+        start_time = datetime.utcnow()
+        task.status = TaskStatus.IN_PROGRESS
+        task.metrics.started_at = start_time
+        
+        # Get circuit breaker
+        cb = self.registry.get_circuit_breaker(agent.agent_id)
+        
+        # Get agent metrics
+        agent_metrics = self.registry.get_metrics(agent.agent_id)
+        if agent_metrics:
+            agent_metrics.tasks_received += 1
+            agent_metrics.current_tasks += 1
+        
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.TASK_STARTED,
+            correlation_id=task.context.correlation_id,
+            data={"task_id": task.id, "agent_id": agent.agent_id}
+        ))
+        
+        try:
+            # Inject dependency results
+            if task.dependencies:
+                dep_results = await self.dependency_resolver.get_dependency_results(task)
+                task.payload["_dependency_results"] = dep_results
+            
+            # Execute with timeout
+            timeout = task.timeout_seconds * task.priority.timeout_multiplier
+            result = await asyncio.wait_for(
+                agent.execute(task),
+                timeout=timeout
+            )
+            
+            # Success
+            task.status = TaskStatus.COMPLETED
+            task.result = result
+            task.metrics.completed_at = datetime.utcnow()
+            
+            execution_time = (
+                task.metrics.completed_at - start_time
+            ).total_seconds() * 1000
+            task.metrics.execution_time_ms = execution_time
+            
+            # Update metrics
+            if agent_metrics:
+                agent_metrics.tasks_completed += 1
+                agent_metrics.total_processing_time_ms += execution_time
+                agent_metrics.min_processing_time_ms = min(
+                    agent_metrics.min_processing_time_ms,
+                    execution_time
+                )
+                agent_metrics.max_processing_time_ms = max(
+                    agent_metrics.max_processing_time_ms,
+                    execution_time
+                )
+                agent_metrics.consecutive_failures = 0
+            
+            if cb:
+                cb.record_success()
+            
+            await self.metrics_collector.record_task_completed(execution_time)
+            await self.dependency_resolver.mark_completed(task.id, result)
+            
+            # Emit completion event
+            await self.event_emitter.emit(SystemEvent(
+                event_type=EventType.TASK_COMPLETED,
+                correlation_id=task.context.correlation_id,
+                data={
+                    "task_id": task.id,
+                    "execution_time_ms": execution_time
+                }
+            ))
+            
+            # Resolve future
+            future = self._task_futures.get(task.id)
+            if future and not future.done():
+                future.set_result(result)
+            
+            # Trigger on_complete callback
+            if task.on_complete:
+                await self._trigger_callback_task(task.on_complete, task)
+            
+            logger.debug(
+                f"Task completed: {task.id} in {execution_time:.2f}ms"
+            )
+            
+        except asyncio.TimeoutError:
+            await self._handle_timeout(task)
+            
+        except Exception as e:
+            await self._handle_failure(task, agent, e)
+            
+        finally:
+            if agent_metrics:
+                agent_metrics.current_tasks -= 1
+            
+            # Move to completed
+            async with self._task_lock:
+                if task.id in self._active_tasks:
+                    del self._active_tasks[task.id]
+                self._completed_tasks[task.id] = task
+                
+                # Trim completed tasks
+                if len(self._completed_tasks) > 10000:
+                    oldest = sorted(
+                        self._completed_tasks.keys(),
+                        key=lambda k: self._completed_tasks[k].created_at
+                    )[:5000]
+                    for k in oldest:
+                        del self._completed_tasks[k]
+    
+    async def _handle_timeout(self, task: Task):
+        """Handle task timeout"""
+        task.status = TaskStatus.TIMEOUT
+        task.error = "Task execution timeout"
+        
+        await self.metrics_collector.record_task_timeout()
+        
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.TASK_TIMEOUT,
+            correlation_id=task.context.correlation_id,
+            data={"task_id": task.id}
+        ))
+        
+        # Try to retry
+        if task.can_retry:
+            await self._retry_task(task)
+        else:
+            await self.dead_letter_queue.add(task, "timeout_max_retries")
+            
+            future = self._task_futures.get(task.id)
+            if future and not future.done():
+                future.set_exception(TimeoutError(task.error))
+    
+    async def _handle_failure(
+        self,
+        task: Task,
+        agent: 'BaseAgent',
+        error: Exception
+    ):
+        """Handle task failure"""
+        task.status = TaskStatus.FAILED
+        task.error = str(error)
+        task.error_traceback = traceback.format_exc()
+        
+        # Update agent metrics
+        agent_metrics = self.registry.get_metrics(agent.agent_id)
+        if agent_metrics:
+            agent_metrics.tasks_failed += 1
+            agent_metrics.consecutive_failures += 1
+            agent_metrics.last_error = str(error)
+            agent_metrics.last_error_at = datetime.utcnow()
+        
+        # Record circuit breaker failure
+        cb = self.registry.get_circuit_breaker(agent.agent_id)
+        if cb:
+            cb.record_failure()
+        
+        await self.metrics_collector.record_task_failed()
+        
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.TASK_FAILED,
+            correlation_id=task.context.correlation_id,
+            data={
+                "task_id": task.id,
+                "error": str(error),
+                "agent_id": agent.agent_id
+            }
+        ))
+        
+        logger.error(f"Task {task.id} failed: {error}")
+        
+        # Try to retry
+        if task.can_retry:
+            await self._retry_task(task)
+        else:
+            await self.dead_letter_queue.add(task, f"failed: {error}")
+            
+            future = self._task_futures.get(task.id)
+            if future and not future.done():
+                future.set_exception(error)
+            
+            # Trigger on_failure callback
+            if task.on_failure:
+                await self._trigger_callback_task(task.on_failure, task)
+    
+    async def _retry_task(self, task: Task):
+        """Retry a failed task"""
+        task.retry_count += 1
+        task.status = TaskStatus.RETRYING
+        task.last_retry_at = datetime.utcnow()
+        
+        await self.metrics_collector.record_task_retry()
+        
+        await self.event_emitter.emit(SystemEvent(
+            event_type=EventType.TASK_RETRYING,
+            correlation_id=task.context.correlation_id,
+            data={
+                "task_id": task.id,
+                "retry_count": task.retry_count,
+                "max_retries": task.max_retries
+            }
+        ))
+        
+        # Wait before retry (exponential backoff)
+        await asyncio.sleep(task.next_retry_delay)
+        
+        # Reset status and re-queue
+        task.status = TaskStatus.PENDING
+        task.assigned_agent = None
+        task.error = None
+        
+        await self.task_queue.put(task)
+        
+        logger.info(
+            f"Task {task.id} queued for retry "
+            f"({task.retry_count}/{task.max_retries})"
+        )
+    
+    async def _trigger_callback_task(self, callback_task_id: str, source_task: Task):
+        """Trigger a callback task"""
+        # Create callback task with reference to source
+        callback = Task(
+            id=callback_task_id,
+            task_type="callback",
+            payload={
+                "source_task_id": source_task.id,
+                "source_task_result": source_task.result,
+                "source_task_error": source_task.error
+            },
+            priority=source_task.priority
+        )
+        await self.submit_task(callback)
+    
+    # ========================================================================
+    # TASK RETRIEVAL
+    # ========================================================================
+    
+    async def get_task_result(
+        self,
+        task_id: str,
+        timeout: float = 30.0
+    ) -> Any:
+        """Wait for and return task result"""
+        future = self._task_futures.get(task_id)
+        if not future:
+            # Check if already completed
+            task = self._completed_tasks.get(task_id)
+            if task:
+                if task.status == TaskStatus.COMPLETED:
+                    return task.result
+                else:
+                    raise RuntimeError(f"Task failed: {task.error}")
+            raise ValueError(f"Unknown task: {task_id}")
+        
+        try:
+            return await asyncio.wait_for(future, timeout=timeout)
+        except asyncio.TimeoutError:
+            raise TimeoutError(f"Task {task_id} did not complete within {timeout}s")
+    
+    async def get_task_status(self, task_id: str) -> Optional[Dict[str, Any]]:
+        """Get task status"""
+        task = self._active_tasks.get(task_id) or self._completed_tasks.get(task_id)
+        if task:
+            return task.to_dict()
+        return None
+    
+    async def cancel_task(self, task_id: str) -> bool:
+        """Cancel a pending task"""
+        async with self._task_lock:
+            task = self._active_tasks.get(task_id)
+            if task and task.status in {TaskStatus.QUEUED, TaskStatus.PENDING}:
+                task.status = TaskStatus.CANCELLED
+                await self.task_queue.remove(task_id)
+                
+                await self.event_emitter.emit(SystemEvent(
+                    event_type=EventType.TASK_CANCELLED,
+                    correlation_id=task.context.correlation_id,
+                    data={"task_id": task_id}
+                ))
+                
+                future = self._task_futures.get(task_id)
+                if future and not future.done():
+                    future.cancel()
+                
+                return True
+        return False
+    
+    # ========================================================================
+    # BACKGROUND WORKERS
+    # ========================================================================
+    
+    async def _health_monitor(self):
+        """Monitor agent health"""
+        while self._running:
+            try:
+                for agent in self.registry.get_all_agents():
+                    health = await agent.health_check()
+                    
+                    metrics = self.registry.get_metrics(agent.agent_id)
+                    if metrics:
+                        metrics.last_health_check = datetime.utcnow()
+                    
+                    if not health.get("healthy", False):
+                        await self.registry.update_status(
+                            agent.agent_id,
+                            AgentStatus.DEGRADED
+                        )
+                        
+                        await self.event_emitter.emit(SystemEvent(
+                            event_type=EventType.AGENT_ERROR,
+                            data={
+                                "agent_id": agent.agent_id,
+                                "health": health
+                            }
+                        ))
+                    else:
+                        current_status = AgentStatus.READY
+                        if agent.current_load > 0.8:
+                            current_status = AgentStatus.BUSY
+                        elif agent.current_load > 0.95:
+                            current_status = AgentStatus.OVERLOADED
+                        
+                        await self.registry.update_status(
+                            agent.agent_id,
+                            current_status
+                        )
+                
+                await asyncio.sleep(30)
+                
+            except Exception as e:
+                logger.error(f"Health monitor error: {e}")
+                await asyncio.sleep(5)
+    
+    async def _metrics_aggregator(self):
+        """Aggregate and report metrics"""
+        while self._running:
+            try:
+                # Update agent counts
+                all_agents = self.registry.get_all_agents()
+                active_agents = [
+                    a for a in all_agents
+                    if a.is_available()
+                ]
+                
+                await self.metrics_collector.update_agent_counts(
+                    len(active_agents),
+                    len(all_agents)
+                )
+                
+                await self.metrics_collector.update_queue_size(
+                    self.task_queue.qsize()
+                )
+                
+                # Emit metrics event
+                metrics = await self.metrics_collector.get_metrics()
+                await self.event_emitter.emit(SystemEvent(
+                    event_type=EventType.METRICS_COLLECTED,
+                    data=self.metrics_collector.get_metrics_dict()
+                ))
+                
+                await asyncio.sleep(10)
+                
+            except Exception as e:
+                logger.error(f"Metrics aggregator error: {e}")
+                await asyncio.sleep(5)
+    
+    async def _timeout_checker(self):
+        """Check for timed out tasks"""
+        while self._running:
+            try:
+                now = datetime.utcnow()
+                
+                async with self._task_lock:
+                    for task_id, task in list(self._active_tasks.items()):
+                        if task.is_expired and task.status == TaskStatus.IN_PROGRESS:
+                            logger.warning(f"Task {task_id} exceeded deadline")
+                            # The executing coroutine should handle this
+                
+                await asyncio.sleep(5)
+                
+            except Exception as e:
+                logger.error(f"Timeout checker error: {e}")
+                await asyncio.sleep(5)
+    
+    async def _dependency_checker(self):
+        """Check tasks waiting for dependencies"""
+        while self._running:
+            try:
+                async with self._task_lock:
+                    for task in self._active_tasks.values():
+                        if task.status == TaskStatus.WAITING_DEPENDENCY:
+                            if await self.dependency_resolver.are_dependencies_met(task):
+                                task.status = TaskStatus.PENDING
+                                await self.task_queue.put(task)
+                
+                await asyncio.sleep(1)
+                
+            except Exception as e:
+                logger.error(f"Dependency checker error: {e}")
+                await asyncio.sleep(5)
+    
+    async def _cleanup_worker(self):
+        """Cleanup old completed tasks and futures"""
+        while self._running:
+            try:
+                cutoff = datetime.utcnow() - timedelta(hours=1)
+                
+                async with self._task_lock:
+                    # Clean old completed tasks
+                    to_remove = [
+                        tid for tid, task in self._completed_tasks.items()
+                        if task.metrics.completed_at and task.metrics.completed_at < cutoff
+                    ]
+                    for tid in to_remove[:1000]:  # Batch cleanup
+                        del self._completed_tasks[tid]
+                        if tid in self._task_futures:
+                            del self._task_futures[tid]
+                
+                await asyncio.sleep(300)  # Every 5 minutes
+                
+            except Exception as e:
+                logger.error(f"Cleanup worker error: {e}")
+                await asyncio.sleep(60)
+    
+    # ========================================================================
+    # PUBLIC API
+    # ========================================================================
+    
+    def get_metrics(self) -> Dict[str, Any]:
+        """Get orchestrator metrics"""
+        return {
+            **self.metrics_collector.get_metrics_dict(),
+            "active_tasks": len(self._active_tasks),
+            "completed_tasks": len(self._completed_tasks),
+            "queue_size": self.task_queue.qsize(),
+            "dead_letter_size": self.dead_letter_queue.size(),
+            "registry": self.registry.get_summary()
+        }
+    
+    def on_event(self, event_type: EventType, handler: EventHandler):
+        """Register event handler"""
+        self.event_emitter.on(event_type, handler)
+    
+    def on_all_events(self, handler: EventHandler):
+        """Register handler for all events"""
+        self.event_emitter.on_all(handler)
+    
+    @asynccontextmanager
+    async def task_context(self, task_type: str, payload: Dict[str, Any]):
+        """Context manager for task execution"""
+        task = Task(task_type=task_type, payload=payload)
+        task_id = await self.submit_task(task)
+        try:
+            result = await self.get_task_result(task_id)
+            yield result
+        finally:
+            pass
+```
+
+---
+
+## 2. `agents/base_agent.py` - Production Base Agent
+
+```python
+"""
+JAIPI-JUDICIAL V3 - Production Base Agent
+Comprehensive base class for all specialized agents
+"""
+
+from __future__ import annotations
+
+import asyncio
+import uuid
+import time
+from abc import ABC, abstractmethod
+from typing import (
+    Dict, Any, Optional, List, Callable, Awaitable,
+    TypeVar, Generic, Set, TYPE_CHECKING
+)
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum
+from contextlib import asynccontextmanager
+import logging
+import traceback
+
+if TYPE_CHECKING:
+    from core.orchestrator import JudicialOrchestrator, Task
+
+logger = logging.getLogger("JAIPI.Agent")
+
+T = TypeVar('T')
+
+
+# ============================================================================
+# AGENT STATE
+# ============================================================================
+
+class AgentLifecycle(Enum):
+    """Agent lifecycle states"""
+    CREATED = "created"
+    INITIALIZING = "initializing"
+    READY = "ready"
+    RUNNING = "running"
+    PAUSED = "paused"
+    STOPPING = "stopping"
+    STOPPED = "stopped"
+    ERROR = "error"
+
+
+@dataclass
+class AgentState:
+    """Comprehensive agent state"""
+    lifecycle: AgentLifecycle = AgentLifecycle.CREATED
+    
+    # Task tracking
+    current_tasks: Set[str] = field(default_factory=set)
+    completed_tasks: int = 0
+    failed_tasks: int = 0
+    
+    # Timing
+    started_at: Optional[datetime] = None
+    last_activity: Optional[datetime] = None
+    last_error_at: Optional[datetime] = None
+    
+    # Errors
+    error_count: int = 0
+    consecutive_errors: int = 0
+    last_error: Optional[str] = None
+    last_error_traceback: Optional[str] = None
+    
+    # Memory (agent working memory)
+    memory: Dict[str, Any] = field(default_factory=dict)
+    
+    # Health
+    health_score: float = 1.0
+
+
+@dataclass
+class AgentConfig:
+    """Agent configuration"""
+    # Identity
+    agent_id: Optional[str] = None
+    name: str = "BaseAgent"
+    version: str = "1.0.0"
+    
+    # Capacity
+    max_concurrent_tasks: int = 5
+    task_timeout_seconds: float = 300.0
+    
+    # Behavior
+    enable_memory: bool = True
+    memory_ttl_seconds: int = 3600
+    
+    # Health
+    health_check_interval_seconds: float = 30.0
+    max_consecutive_errors: int = 5
+    
+    # Retry
+    retry_on_failure: bool = True
+    max_retries: int = 3
+    
+    # Logging
+    log_level: str = "INFO"
+    log_task_payloads: bool = False
+
+
+# ============================================================================
+# MIDDLEWARE
+# ============================================================================
+
+class AgentMiddleware(ABC):
+    """Base class for agent middleware"""
+    
+    @abstractmethod
+    async def before_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task'
+    ) -> Optional['Task']:
+        """Called before task execution. Return None to skip task."""
+        pass
+    
+    @abstractmethod
+    async def after_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task',
+        result: Any,
+        error: Optional[Exception]
+    ) -> Any:
+        """Called after task execution. Can modify result."""
+        pass
+
+
+class LoggingMiddleware(AgentMiddleware):
+    """Middleware for logging task execution"""
+    
+    async def before_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task'
+    ) -> Optional['Task']:
+        logger.info(
+            f"[{agent.agent_id}] Starting task {task.id} [{task.task_type}]"
+        )
+        return task
+    
+    async def after_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task',
+        result: Any,
+        error: Optional[Exception]
+    ) -> Any:
+        if error:
+            logger.error(
+                f"[{agent.agent_id}] Task {task.id} failed: {error}"
+            )
+        else:
+            logger.info(
+                f"[{agent.agent_id}] Task {task.id} completed"
+            )
+        return result
+
+
+class MetricsMiddleware(AgentMiddleware):
+    """Middleware for collecting metrics"""
+    
+    def __init__(self):
+        self.task_times: Dict[str, float] = {}
+    
+    async def before_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task'
+    ) -> Optional['Task']:
+        self.task_times[task.id] = time.monotonic()
+        return task
+    
+    async def after_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task',
+        result: Any,
+        error: Optional[Exception]
+    ) -> Any:
+        start_time = self.task_times.pop(task.id, None)
+        if start_time:
+            elapsed = (time.monotonic() - start_time) * 1000
+            agent._record_execution_time(elapsed)
+        return result
+
+
+class ValidationMiddleware(AgentMiddleware):
+    """Middleware for validating task payloads"""
+    
+    def __init__(self, validators: Dict[str, Callable] = None):
+        self.validators = validators or {}
+    
+    async def before_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task'
+    ) -> Optional['Task']:
+        validator = self.validators.get(task.task_type)
+        if validator:
+            if not validator(task.payload):
+                raise ValueError(f"Invalid payload for task type: {task.task_type}")
+        return task
+    
+    async def after_execute(
+        self,
+        agent: 'BaseAgent',
+        task: 'Task',
+        result: Any,
+        error: Optional[Exception]
+    ) -> Any:
+        return result
+
+
+# ============================================================================
+# BASE AGENT
+# ============================================================================
+
+class BaseAgent(ABC):
+    """
+    Production-grade base agent class
+    
+    Features:
+    - Full lifecycle management
+    - Middleware pipeline
+    - Working memory with TTL
+    - Health monitoring
+    - Inter-agent communication
+    - Metrics collection
+    - Error handling with recovery
+    """
+    
+    def __init__(self, config: AgentConfig = None):
+        self.config = config or AgentConfig()
+        
+        # Identity
+        self.agent_id = self.config.agent_id or f"{self.config.name}_{uuid.uuid4().hex[:8]}"
+        self.name = self.config.name
+        self.version = self.config.version
+        
+        # State
+        self.state = AgentState()
+        
+        # Orchestrator reference
+        self._orchestrator: Optional['JudicialOrchestrator'] = None
+        
+        # Middleware
+        self._middleware: List[AgentMiddleware] = [
+            LoggingMiddleware(),
+            MetricsMiddleware()
+        ]
+        
+        # Task handlers
+        self._task_handlers: Dict[str, Callable] = {}
+        
+        # Message queue for inter-agent communication
+        self._message_queue: asyncio.Queue = asyncio.Queue()
+        
+        # Semaphore for concurrency control
+        self._task_semaphore = asyncio.Semaphore(self.config.max_concurrent_tasks)
+        
+        # Background tasks
+        self._background_tasks: List[asyncio.Task] = []
+        
+        # Metrics
+        self._execution_times: List[float] = []
+        self._max_execution_times = 1000
+        
+        # Locks
+        self._state_lock = asyncio.Lock()
+        self._memory_lock = asyncio.Lock()
+        
+        # Register task handlers
+        self._register_handlers()
+        
+        logger.info(f"Agent created: {self.agent_id}")
+    
+    # ========================================================================
+    # LIFECYCLE
+    # ========================================================================
+    
+    async def start(self):
+        """Start the agent"""
+        async with self._state_lock:
+            if self.state.lifecycle not in {AgentLifecycle.CREATED, AgentLifecycle.STOPPED}:
+                return
+            
+            self.state.lifecycle = AgentLifecycle.INITIALIZING
+        
+        try:
+            # Agent-specific initialization
+            await self.on_start()
+            
+            # Start background tasks
+            self._background_tasks = [
+                asyncio.create_task(self._message_processor()),
+                asyncio.create_task(self._memory_cleanup()),
+                asyncio.create_task(self._self_health_monitor())
+            ]
+            
+            async with self._state_lock:
+                self.state.lifecycle = AgentLifecycle.READY
+                self.state.started_at = datetime.utcnow()
+            
+            logger.info(f"Agent started: {self.agent_id}")
+            
+        except Exception as e:
+            async with self._state_lock:
+                self.state.lifecycle = AgentLifecycle.ERROR
+                self.state.last_error = str(e)
+            logger.error(f"Agent {self.agent_id} failed to start: {e}")
+            raise
+    
+    async def stop(self):
+        """Stop the agent gracefully"""
+        async with self._state_lock:
+            if self.state.lifecycle == AgentLifecycle.STOPPED:
+                return
+            
+            self.state.lifecycle = AgentLifecycle.STOPPING
+        
+        # Wait for current tasks to complete
+        while self.state.current_tasks:
+            await asyncio.sleep(0.1)
+        
+        # Cancel background tasks
+        for task in self._background_tasks:
+            task.cancel()
+        
+        await asyncio.gather(*self._background_tasks, return_exceptions=True)
+        
+        # Agent-specific cleanup
+        await self.on_stop()
+        
+        async with self._state_lock:
+            self.state.lifecycle = AgentLifecycle.STOPPED
+        
+        logger.info(f"Agent stopped: {self.agent_id}")
+    
+    async def pause(self):
+        """Pause the agent (stop accepting new tasks)"""
+        async with self._state_lock:
+            if self.state.lifecycle == AgentLifecycle.READY:
+                self.state.lifecycle = AgentLifecycle.PAUSED
+                logger.info(f"Agent paused: {self.agent_id}")
+    
+    async def resume(self):
+        """Resume a paused agent"""
+        async with self._state_lock:
+            if self.state.lifecycle == AgentLifecycle.PAUSED:
+                self.state.lifecycle = AgentLifecycle.READY
+                logger.info(f"Agent resumed: {self.agent_id}")
+    
+    # ========================================================================
+    # TASK EXECUTION
+    # ========================================================================
+    
+    async def execute(self, task: 'Task') -> Any:
+        """
+        Execute a task with full middleware pipeline
+        """
+        if not self.is_available():
+            raise RuntimeError(f"Agent {self.agent_id} is not available")
+        
+        async with self._task_semaphore:
+            async with self._state_lock:
+                self.state.current_tasks.add(task.id)
+                self.state.last_activity = datetime.utcnow()
+            
+            result = None
+            error = None
+            
+            try:
+                # Run before middleware
+                current_task = task
+                for middleware in self._middleware:
+                    current_task = await middleware.before_execute(self, current_task)
+                    if current_task is None:
+                        return None  # Task skipped by middleware
+                
+                # Execute task
+                result = await self._execute_task(current_task)
+                
+                async with self._state_lock:
+                    self.state.completed_tasks += 1
+                    self.state.consecutive_errors = 0
+                
+            except Exception as e:
+                error = e
+                async with self._state_lock:
+                    self.state.failed_tasks += 1
+                    self.state.error_count += 1
+                    self.state.consecutive_errors += 1
+                    self.state.last_error = str(e)
+                    self.state.last_error_traceback = traceback.format_exc()
+                    self.state.last_error_at = datetime.utcnow()
+                
+                # Check if we should degrade
+                if self.state.consecutive_errors >= self.config.max_consecutive_errors:
+                    await self._enter_degraded_state()
+                
+                raise
+                
+            finally:
+                # Run after middleware
+                for middleware in reversed(self._middleware):
+                    result = await middleware.after_execute(self, task, result, error)
+                
+                async with self._state_lock:
+                    self.state.current_tasks.discard(task.id)
+            
+            return result
+    
+    async def _execute_task(self, task: 'Task') -> Any:
+        """Internal task execution"""
+        # Check for registered handler
+        handler = self._task_handlers.get(task.task_type)
+        if handler:
+            return await handler(task)
+        
+        # Fall back to process_task
+        return await self.process_task(task)
+    
+    @abstractmethod
+    async def process_task(self, task: 'Task') -> Any:
+        """
+        Process a task - must be implemented by subclasses
+        
+        Args:
+            task: The task to process
+            
+        Returns:
+            The task result
+        """
+        pass
+    
+    def register_handler(
+        self,
+        task_type: str,
+        handler: Callable[['Task'], Awaitable[Any]]
+    ):
+        """Register a handler for a specific task type"""
+        self._task_handlers[task_type] = handler
+    
+    def _register_handlers(self):
+        """Override to register task handlers"""
+        pass
+    
+    # ========================================================================
+    # AVAILABILITY
+    # ========================================================================
+    
+    def is_available(self) -> bool:
+        """Check if agent is available for new tasks"""
+        return (
+            self.state.lifecycle in {AgentLifecycle.READY, AgentLifecycle.RUNNING} and
+            len(self.state.current_tasks) < self.config.max_concurrent_tasks
+        )
+    
+    @property
+    def current_load(self) -> float:
+        """Get current load (0.0 to 1.0)"""
+        return len(self.state.current_tasks) / self.config.max_concurrent_tasks
+    
+    # ========================================================================
+    # HEALTH
+    # ========================================================================
+    
+    async def health_check(self) -> Dict[str, Any]:
+        """Comprehensive health check"""
+        async with self._state_lock:
+            health = {
+                "healthy": self.state.lifecycle in {
+                    AgentLifecycle.READY,
+                    AgentLifecycle.RUNNING,
+                    AgentLifecycle.PAUSED
+                },
+                "agent_id": self.agent_id,
+                "lifecycle": self.state.lifecycle.value,
+                "current_tasks": len(self.state.current_tasks),
+                "max_tasks": self.config.max_concurrent_tasks,
+                "load": self.current_load,
+                "completed_tasks": self.state.completed_tasks,
+                "failed_tasks": self.state.failed_tasks,
+                "error_count": self.state.error_count,
+                "consecutive_errors": self.state.consecutive_errors,
+                "last_activity": (
+                    self.state.last_activity.isoformat()
+                    if self.state.last_activity else None
+                ),
+                "last_error": self.state.last_error,
+                "uptime_seconds": (
+                    (datetime.utcnow() - self.state.started_at).total_seconds()
+                    if self.state.started_at else 0
+                ),
+                "avg_execution_time_ms": self._get_avg_execution_time(),
+                "health_score": self.state.health_score
+            }
+        
+        # Run custom health checks
+        custom_health = await self.on_health_check()
+        health.update(custom_health)
+        
+        return health
+    
+    def _get_avg_execution_time(self) -> float:
+        """Get average execution time"""
+        if not self._execution_times:
+            return 0.0
+        return sum(self._execution_times) / len(self._execution_times)
+    
+    def _record_execution_time(self, time_ms: float):
+        """Record execution time"""
+        self._execution_times.append(time_ms)
+        if len(self._execution_times) > self._max_execution_times:
+            self._execution_times = self._execution_times[-self._max_execution_times:]
+    
+    async def _enter_degraded_state(self):
+        """Enter degraded state due to errors"""
+        logger.warning(f"Agent {self.agent_id} entering degraded state")
+        self.state.health_score = 0.5
+        
+        if self._orchestrator:
+            await self._orchestrator.event_emitter.emit(
+                self._orchestrator.event_emitter._handlers  # This would emit agent error event
+            )
+    
+    async def _self_health_monitor(self):
+        """Self-monitor health"""
+        while self.state.lifecycle not in {AgentLifecycle.STOPPING, AgentLifecycle.STOPPED}:
+            try:
+                # Calculate health score
+                async with self._state_lock:
+                    # Factor in error rate
+                    total = self.state.completed_tasks + self.state.failed_tasks
+                    if total > 0:
+                        success_rate = self.state.completed_tasks / total
+                    else:
+                        success_rate = 1.0
+                    
+                    # Factor in consecutive errors
+                    error_penalty = min(
+                        self.state.consecutive_errors * 0.1,
+                        0.5
+                    )
+                    
+                    # Factor in load
+                    load_factor = 1.0 - (self.current_load * 0.2)
+                    
+                    self.state.health_score = max(
+                        0.0,
+                        min(1.0, success_rate * load_factor - error_penalty)
+                    )
+                
+                await asyncio.sleep(self.config.health_check_interval_seconds)
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Health monitor error: {e}")
+                await asyncio.sleep(5)
+    
+    # ========================================================================
+    # MEMORY
+    # ========================================================================
+    
+    async def remember(self, key: str, value: Any, ttl_seconds: int = None):
+        """Store value in agent memory"""
+        if not self.config.enable_memory:
+            return
+        
+        ttl = ttl_seconds or self.config.memory_ttl_seconds
+        expiry = datetime.utcnow() + timedelta(seconds=ttl)
+        
+        async with self._memory_lock:
+            self.state.memory[key] = {
+                "value": value,
+                "expiry": expiry,
+                "created": datetime.utcnow()
+            }
+    
+    async def recall(self, key: str, default: Any = None) -> Any:
+        """Retrieve value from agent memory"""
+        async with self._memory_lock:
+            entry = self.state.memory.get(key)
+            if entry:
+                if datetime.utcnow() < entry["expiry"]:
+                    return entry["value"]
+                else:
+                    del self.state.memory[key]
+        return default
+    
+    async def forget(self, key: str):
+        """Remove value from memory"""
+        async with self._memory_lock:
+            self.state.memory.pop(key, None)
+    
+    async def _memory_cleanup(self):
+        """Cleanup expired memory entries"""
+        while self.state.lifecycle not in {AgentLifecycle.STOPPING, AgentLifecycle.STOPPED}:
+            try:
+                async with self._memory_lock:
+                    now = datetime.utcnow()
+                    expired = [
+                        key for key, entry in self.state.memory.items()
+                        if now >= entry["expiry"]
+                    ]
+                    for key in expired:
+                        del self.state.memory[key]
+                
+                await asyncio.sleep(60)  # Cleanup every minute
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Memory cleanup error: {e}")
+                await asyncio.sleep(60)
+    
+    # ========================================================================
+    # INTER-AGENT COMMUNICATION
+    # ========================================================================
+    
+    def set_orchestrator(self, orchestrator: 'JudicialOrchestrator'):
+        """Set orchestrator reference"""
+        self._orchestrator = orchestrator
+    
+    async def send_message(
+        self,
+        target_agent_id: str,
+        message_type: str,
+        payload: Dict[str, Any]
+    ):
+        """Send message to another agent"""
+        if not self._orchestrator:
+            raise RuntimeError("Agent not connected to orchestrator")
+        
+        target = self._orchestrator.registry.get_agent(target_agent_id)
+        if not target:
+            raise ValueError(f"Agent not found: {target_agent_id}")
+        
+        await target._receive_message({
+            "from": self.agent_id,
+            "type": message_type,
+            "payload": payload,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+    
+    async def broadcast_message(
+        self,
+        message_type: str,
+        payload: Dict[str, Any]
+    ):
+        """Broadcast message to all agents"""
+        if not self._orchestrator:
+            return
+        
+        for agent in self._orchestrator.registry.get_all_agents():
+            if agent.agent_id != self.agent_id:
+                await agent._receive_message({
+                    "from": self.agent_id,
+                    "type": message_type,
+                    "payload": payload,
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "broadcast": True
+                })
+    
+    async def _receive_message(self, message: Dict[str, Any]):
+        """Receive a message"""
+        await self._message_queue.put(message)
+    
+    async def _message_processor(self):
+        """Process incoming messages"""
+        while self.state.lifecycle not in {AgentLifecycle.STOPPING, AgentLifecycle.STOPPED}:
+            try:
+                message = await asyncio.wait_for(
+                    self._message_queue.get(),
+                    timeout=1.0
+                )
+                await self.on_message(message)
+            except asyncio.TimeoutError:
+                continue
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Message processor error: {e}")
+    
+    # ========================================================================
+    # TASK SUBMISSION
+    # ========================================================================
+    
+    async def submit_task(
+        self,
+        task_type: str,
+        payload: Dict[str, Any],
+        **kwargs
+    ) -> str:
+        """Submit a task to the orchestrator"""
+        if not self._orchestrator:
+            raise RuntimeError("Agent not connected to orchestrator")
+        
+        from core.orchestrator import Task
+        task = Task(
+            task_type=task_type,
+            payload=payload,
+            **kwargs
+        )
+        return await self._orchestrator.submit_task(task)
+    
+    async def request_task(
+        self,
+        task_type: str,
+        payload: Dict[str, Any],
+        timeout: float = 30.0,
+        **kwargs
+    ) -> Any:
+        """Submit a task and wait for result"""
+        task_id = await self.submit_task(task_type, payload, **kwargs)
+        return await self._orchestrator.get_task_result(task_id, timeout=timeout)
+    
+    # ========================================================================
+    # HOOKS (Override in subclasses)
+    # ========================================================================
+    
+    async def on_start(self):
+        """Called when agent starts"""
+        pass
+    
+    async def on_stop(self):
+        """Called when agent stops"""
+        pass
+    
+    async def on_message(self, message: Dict[str, Any]):
+        """Called when message is received"""
+        pass
+    
+    async def on_health_check(self) -> Dict[str, Any]:
+        """Custom health check - override to add custom checks"""
+        return {}
+    
+    # ========================================================================
+    # MIDDLEWARE
+    # ========================================================================
+    
+    def add_middleware(self, middleware: AgentMiddleware):
+        """Add middleware to pipeline"""
+        self._middleware.append(middleware)
+    
+    def remove_middleware(self, middleware_type: type):
+        """Remove middleware by type"""
+        self._middleware = [
+            m for m in self._middleware
+            if not isinstance(m, middleware_type)
+        ]
+    
+    # ========================================================================
+    # UTILITIES
+    # ========================================================================
+    
+    @asynccontextmanager
+    async def task_span(self, name: str):
+        """Context manager for task tracing"""
+        start = time.monotonic()
+        try:
+            yield
+        finally:
+            elapsed = (time.monotonic() - start) * 1000
+            logger.debug(f"[{self.agent_id}] {name} took {elapsed:.2f}ms")
+    
+    def __repr__(self) -> str:
+        return (
+            f"<{self.__class__.__name__} "
+            f"id={self.agent_id} "
+            f"state={self.state.lifecycle.value}>"
+        )
+```
+
+---
+
+## 3. `agents/legal/compliance_agent.py` - Full Compliance Agent
+
+```python
+"""
+JAIPI-JUDICIAL V3 - Legal Compliance Agent
+Comprehensive compliance monitoring and validation
+"""
+
+from __future__ import annotations
+
+import asyncio
+from typing import Dict, Any, List, Optional, Set, Tuple
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum
+import re
+import hashlib
+import json
+
+from ..base_agent import BaseAgent, AgentConfig
+
+# Forward imports
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from core.orchestrator import Task
+
+
+# ============================================================================
+# DOMAIN MODELS
+# ============================================================================
+
+class ComplianceLevel(Enum):
+    """Compliance assessment levels"""
+    FULLY_COMPLIANT = "fully_compliant"
+    SUBSTANTIALLY_COMPLIANT = "substantially_compliant"
+    PARTIALLY_COMPLIANT = "partially_compliant"
+    MINIMALLY_COMPLIANT = "minimally_compliant"
+    NON_COMPLIANT = "non_compliant"
+    CRITICAL_NON_COMPLIANCE = "critical_non_compliance"
+    
+    @property
+    def score(self) -> float:
+        """Numeric score for compliance level"""
+        return {
+            ComplianceLevel.FULLY_COMPLIANT: 100.0,
+            ComplianceLevel.SUBSTANTIALLY_COMPLIANT: 85.0,
+            ComplianceLevel.PARTIALLY_COMPLIANT: 60.0,
+            ComplianceLevel.MINIMALLY_COMPLIANT: 40.0,
+            ComplianceLevel.NON_COMPLIANT: 20.0,
+            ComplianceLevel.CRITICAL_NON_COMPLIANCE: 0.0
+        }[self]
+    
+    @classmethod
+    def from_score(cls, score: float) -> 'ComplianceLevel':
+        """Get compliance level from score"""
+        if score >= 95:
+            return cls.FULLY_COMPLIANT
+        elif score >= 80:
+            return cls.SUBSTANTIALLY_COMPLIANT
+        elif score >= 60:
+            return cls.PARTIALLY_COMPLIANT
+        elif score >= 40:
+            return cls.MINIMALLY_COMPLIANT
+        elif score >= 20:
+            return cls.NON_COMPLIANT
+        else:
+            return cls.CRITICAL_NON_COMPLIANCE
+
+
+class ViolationSeverity(Enum):
+    """Violation severity levels"""
+    INFORMATIONAL = 1
+    LOW = 2
+    MEDIUM = 3
+    HIGH = 4
+    CRITICAL = 5
+    
+    @property
+    def weight(self) -> float:
+        """Weight for scoring"""
+        return {
+            ViolationSeverity.INFORMATIONAL: 1.0,
+            ViolationSeverity.LOW: 2.0,
+            ViolationSeverity.MEDIUM: 5.0,
+            ViolationSeverity.HIGH: 10.0,
+            ViolationSeverity.CRITICAL: 25.0
+        }[self]
+
+
+class RegulatoryFramework(Enum):
+    """Regulatory frameworks"""
+    # Federal
+    FISMA = "FISMA"
+    FEDRAMP = "FedRAMP"
+    FOIA = "FOIA"
+    PRIVACY_ACT = "Privacy_Act"
+    APA = "APA"
+    DATA_ACT = "DATA_Act"
+    E_GOVERNMENT_ACT = "E-Government_Act"
+    PAPERWORK_REDUCTION_ACT = "PRA"
+    CIPSEA = "CIPSEA"
+    
+    # Privacy
+    CCPA = "CCPA"
+    CPRA = "CPRA"
+    GDPR = "GDPR"
+    HIPAA = "HIPAA"
+    FERPA = "FERPA"
+    COPPA = "COPPA"
+    GLBA = "GLBA"
+    
+    # Security
+    NIST_800_53 = "NIST_800-53"
+    NIST_CSF = "NIST_CSF"
+    SOC2 = "SOC2"
+    ISO_27001 = "ISO_27001"
+    
+    # Government contracting
+    FAR = "FAR"
+    DFARS = "DFARS"
+    
+    # Accessibility
+    SECTION_508 = "Section_508"
+    WCAG = "WCAG"
+
+
+@dataclass
+class Violation:
+    """Represents a compliance violation"""
+    id: str
+    regulation_id: str
+    regulation_code: str
+    rule_id: str
+    severity: ViolationSeverity
+    title: str
+    description: str
+    evidence: List[Dict[str, Any]]
+    remediation: str
+    deadline: Optional[datetime] = None
+    detected_at: datetime = field(default_factory=datetime.utcnow)
+    
+    # Context
+    entity_id: str = ""
+    entity_type: str = ""
+    field_path: Optional[str] = None
+    actual_value: Optional[Any] = None
+    expected_value: Optional[Any] = None
+    
+    # Status
+    acknowledged: bool = False
+    acknowledged_by: Optional[str] = None
+    acknowledged_at: Optional[datetime] = None
+    resolved: bool = False
+    resolved_at: Optional[datetime] = None
+    
+    # Risk
+    risk_score: float = 0.0
+    potential_penalty: Optional[str] = None
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "id": self.id,
+            "regulation_code": self.regulation_code,
+            "rule_id": self.rule_id,
+            "severity": self.severity.name,
+            "title": self.title,
+            "description": self.description,
+            "evidence": self.evidence,
+            "remediation": self.remediation,
+            "detected_at": self.detected_at.isoformat(),
+            "entity_id": self.entity_id,
+            "risk_score": self.risk_score,
+            "resolved": self.resolved
+        }
+
+
+@dataclass
+class ComplianceRule:
+    """A compliance rule definition"""
+    id: str
+    regulation_id: str
+    regulation_code: str
+    framework: RegulatoryFramework
+    
+    # Rule definition
+    name: str
+    description: str
+    requirement_text: str
+    
+    # Evaluation
+    check_type: str  # 'presence', 'value', 'pattern', 'custom'
+    field_path: Optional[str] = None
+    expected_value: Optional[Any] = None
+    pattern: Optional[str] = None
+    custom_evaluator: Optional[str] = None
+    
+    # Severity
+    severity: ViolationSeverity = ViolationSeverity.MEDIUM
+    
+    # Applicability
+    entity_types: List[str] = field(default_factory=list)
+    jurisdictions: List[str] = field(default_factory=list)
+    conditions: List[Dict[str, Any]] = field(default_factory=list)
+    
+    # Timing
+    effective_date: Optional[datetime] = None
+    expiration_date: Optional[datetime] = None
+    
+    # Remediation
+    remediation_guidance: str = ""
+    remediation_deadline_days: int = 30
+    
+    # References
+    citations: List[str] = field(default_factory=list)
+    related_rules: List[str] = field(default_factory=list)
+    
+    def is_applicable(
+        self,
+        entity_type: str,
+        jurisdiction: str,
+        timestamp: datetime = None
+    ) -> bool:
+        """Check if rule is applicable"""
+        timestamp = timestamp or datetime.utcnow()
+        
+        # Check entity type
+        if self.entity_types and entity_type not in self.entity_types:
+            return False
+        
+        # Check jurisdiction
+        if self.jurisdictions and jurisdiction not in self.jurisdictions:
+            return False
+        
+        # Check effective date
+        if self.effective_date and timestamp < self.effective_date:
+            return False
+        
+        # Check expiration
+        if self.expiration_date and timestamp > self.expiration_date:
+            return False
+        
+        return True
+
+
+@dataclass
+class ComplianceAssessment:
+    """Result of a compliance assessment"""
+    id: str
+    entity_id: str
+    entity_type: str
+    entity_name: str
+    
+    # Assessment details
+    frameworks_assessed: List[RegulatoryFramework]
+    jurisdiction: str
+    assessment_date: datetime
+    
+    # Results
+    compliance_level: ComplianceLevel
+    compliance_score: float
+    violations: List[Violation]
+    warnings: List[Dict[str, Any]]
+    
+    # Statistics
+    rules_evaluated: int
+    rules_passed: int
+    rules_failed: int
+    rules_not_applicable: int
+    
+    # Risk
+    overall_risk_score: float
+    risk_factors: List[Dict[str, Any]]
+    
+    # Recommendations
+    recommendations: List[str]
+    priority_actions: List[Dict[str, Any]]
+    
+    # Metadata
+    assessor_agent_id: str = ""
+    duration_ms: float = 0.0
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "id": self.id,
+            "entity_id": self.entity_id,
+            "entity_type": self.entity_type,
+            "entity_name": self.entity_name,
+            "compliance_level": self.compliance_level.value,
+            "compliance_score": self.compliance_score,
+            "violations": [v.to_dict() for v in self.violations],
+            "rules_evaluated": self.rules_evaluated,
+            "rules_passed": self.rules_passed,
+            "rules_failed": self.rules_failed,
+            "overall_risk_score": self.overall_risk_score,
+            "recommendations": self.recommendations,
+            "assessment_date": self.assessment_date.isoformat()
+        }
+
+
+@dataclass
+class AuditTrail:
+    """Audit trail entry"""
+    id: str
+    timestamp: datetime
+    action: str
+    actor_id: str
+    actor_type: str  # 'agent', 'user', 'system'
+    entity_id: str
+    entity_type: str
+    
+    # Details
+    details: Dict[str, Any]
+    before_state: Optional[Dict[str, Any]] = None
+    after_state: Optional[Dict[str, Any]] = None
+    
+    # Context
+    correlation_id: Optional[str] = None
+    ip_address: Optional[str] = None
+    user_agent: Optional[str] = None
+
+
+# ============================================================================
+# COMPLIANCE AGENT
+# ============================================================================
+
+class LegalComplianceAgent(BaseAgent):
+    """
+    Production-grade legal compliance monitoring agent
+    
+    Capabilities:
+    - Multi-framework compliance assessment
+    - Continuous compliance monitoring
+    - Violation detection and tracking
+    - Risk assessment
+    - Remediation guidance
+    - Audit trail management
+    - Compliance reporting
+    """
+    
+    def __init__(self, config: Dict[str, Any] = None):
+        agent_config = AgentConfig(
+            name="LegalComplianceAgent",
+            max_concurrent_tasks=10,
+            task_timeout_seconds=300.0
+        )
+        super().__init__(agent_config)
+        
+        self.agent_config = config or {}
+        
+        # Rule storage
+        self._rules: Dict[str, ComplianceRule] = {}
+        self._rules_by_framework: Dict[RegulatoryFramework, List[str]] = {}
+        self._rules_by_entity_type: Dict[str, List[str]] = {}
+        
+        # Assessment history
+        self._assessments: Dict[str, ComplianceAssessment] = {}
+        self._violations: Dict[str, Violation] = {}
+        
+        # Audit trail
+        self._audit_trail: List[AuditTrail] = []
+        
+        # Caches
+        self._entity_cache: Dict[str, Dict[str, Any]] = {}
+        self._assessment_cache: Dict[str, ComplianceAssessment] = {}
+        self._cache_ttl_seconds = 300
+        
+        # Custom evaluators
+        self._custom_evaluators: Dict[str, callable] = {}
+        
+        # Monitoring state
+        self._monitored_entities: Set[str] = set()
+        self._monitoring_interval_seconds = 3600  # 1 hour
+    
+    def _register_handlers(self):
+        """Register task handlers"""
+        self.register_handler("assess_compliance", self._handle_assess_compliance)
+        self.register_handler("check_violation", self._handle_check_violation)
+        self.register_handler("validate_api_response", self._handle_validate_api_response)
+        self.register_handler("audit_data_handling", self._handle_audit_data_handling)
+        self.register_handler("generate_compliance_report", self._handle_generate_report)
+        self.register_handler("check_regulatory_deadlines", self._handle_check_deadlines)
+        self.register_handler("register_entity_monitoring", self._handle_register_monitoring)
+        self.register_handler("get_violation_history", self._handle_get_violations)
+        self.register_handler("acknowledge_violation", self._handle_acknowledge_violation)
+        self.register_handler("resolve_violation", self._handle_resolve_violation)
+        self.register_handler("get_audit_trail", self._handle_get_audit_trail)
+    
+    async def on_start(self):
+        """Initialize compliance agent"""
+        await self._load_compliance_rules()
+        await self._load_custom_evaluators()
+        
+        # Start monitoring loop
+        asyncio.create_task(self._continuous_monitoring_loop())
+    
+    async def process_task(self, task: 'Task') -> Any:
+        """Process compliance tasks"""
+        # Default handler routing
+        handler = self._task_handlers.get(task.task_type)
+        if handler:
+            return await handler(task)
+        raise ValueError(f"Unknown task type: {task.task_type}")
+    
+    # ========================================================================
+    # TASK HANDLERS
+    # ========================================================================
+    
+    async def _handle_assess_compliance(self, task: 'Task') -> ComplianceAssessment:
+        """Assess compliance for an entity"""
+        payload = task.payload
+        
+        entity = payload.get("entity", {})
+        entity_id = entity.get("id", "unknown")
+        entity_type = payload.get("entity_type", "unknown")
+        entity_name = entity.get("name", entity_id)
+        
+        frameworks = payload.get("frameworks", [])
+        if isinstance(frameworks, list) and frameworks:
+            frameworks = [
+                RegulatoryFramework(f) if isinstance(f, str) else f
+                for f in frameworks
+            ]
+        else:
+            frameworks = list(RegulatoryFramework)  # All frameworks
+        
+        jurisdiction = payload.get("jurisdiction", "federal")
+        
+        return await self.assess_compliance(
+            entity=entity,
+            entity_id=entity_id,
+            entity_type=entity_type,
+            entity_name=entity_name,
+            frameworks=frameworks,
+            jurisdiction=jurisdiction
+        )
+    
+    async def _handle_check_violation(self, task: 'Task') -> Dict[str, Any]:
+        """Check for specific violation"""
+        payload = task.payload
+        
+        entity = payload.get("entity", {})
+        rule_id = payload.get("rule_id")
+        
+        if not rule_id:
+            raise ValueError("rule_id is required")
+        
+        rule = self._rules.get(rule_id)
+        if not rule:
+            raise ValueError(f"Rule not found: {rule_id}")
+        
+        result = await self._evaluate_rule(entity, rule)
+        return result
+    
+    async def _handle_validate_api_response(self, task: 'Task') -> Dict[str, Any]:
+        """Validate API response against compliance requirements"""
+        payload = task.payload
+        
+        api_name = payload.get("api_name")
+        response_data = payload.get("response_data", {})
+        requirements = payload.get("requirements", [])
+        
+        return await self.validate_api_response(
+            api_name=api_name,
+            response_data=response_data,
+            requirements=requirements
+        )
+    
+    async def _handle_audit_data_handling(self, task: 'Task') -> Dict[str, Any]:
+        """Audit data handling practices"""
+        payload = task.payload
+        
+        data_flow = payload.get("data_flow", {})
+        regulations = payload.get("regulations", [])
+        
+        return await self.audit_data_handling(
+            data_flow=data_flow,
+            regulations=regulations
+        )
+    
+    async def _handle_generate_report(self, task: 'Task') -> Dict[str, Any]:
+        """Generate compliance report"""
+        payload = task.payload
+        
+        entity_id = payload.get("entity_id")
+        report_type = payload.get("report_type", "summary")
+        period = payload.get("period", {})
+        
+        return await self.generate_compliance_report(
+            entity_id=entity_id,
+            report_type=report_type,
+            period=period
+        )
+    
+    async def _handle_check_deadlines(self, task: 'Task') -> Dict[str, Any]:
+        """Check regulatory deadlines"""
+        payload = task.payload
+        entity_id = payload.get("entity_id")
+        
+        return await self.check_regulatory_deadlines(entity_id)
+    
+    async def _handle_register_monitoring(self, task: 'Task') -> Dict[str, Any]:
+        """Register entity for continuous monitoring"""
+        payload = task.payload
+        entity_id = payload.get("entity_id")
+        
+        self._monitored_entities.add(entity_id)
+        
+        return {
+            "entity_id": entity_id,
+            "monitoring_registered": True,
+            "monitoring_interval_seconds": self._monitoring_interval_seconds
+        }
+    
+    async def _handle_get_violations(self, task: 'Task') -> List[Dict[str, Any]]:
+        """Get violation history"""
+        payload = task.payload
+        
+        entity_id = payload.get("entity_id")
+        status = payload.get("status")  # 'open', 'resolved', 'all'
+        severity = payload.get("severity")
+        limit = payload.get("limit", 100)
+        
+        violations = list(self._violations.values())
+        
+        if entity_id:
+            violations = [v for v in violations if v.entity_id == entity_id]
+        
+        if status == "open":
+            violations = [v for v in violations if not v.resolved]
+        elif status == "resolved":
+            violations = [v for v in violations if v.resolved]
+        
+        if severity:
+            sev = ViolationSeverity[severity.upper()]
+            violations = [v for v in violations if v.severity == sev]
+        
+        violations.sort(key=lambda v: v.detected_at, reverse=True)
+        
+        return [v.to_dict() for v in violations[:limit]]
+    
+    async def _handle_acknowledge_violation(self, task: 'Task') -> Dict[str, Any]:
+        """Acknowledge a violation"""
+        payload = task.payload
+        
+        violation_id = payload.get("violation_id")
+        acknowledged_by = payload.get("acknowledged_by", "system")
+        
+        violation = self._violations.get(violation_id)
+        if not violation:
+            raise ValueError(f"Violation not found: {violation_id}")
+        
+        violation.acknowledged = True
+        violation.acknowledged_by = acknowledged_by
+        violation.acknowledged_at = datetime.utcnow()
+        
+        await self._add_audit_entry(
+            action="acknowledge_violation",
+            actor_id=acknowledged_by,
+            actor_type="user",
+            entity_id=violation_id,
+            entity_type="violation",
+            details={"violation_id": violation_id}
+        )
+        
+        return {"violation_id": violation_id, "acknowledged": True}
+    
+    async def _handle_resolve_violation(self, task: 'Task') -> Dict[str, Any]:
+        """Resolve a violation"""
+        payload = task.payload
+        
+        violation_id = payload.get("violation_id")
+        resolution_notes = payload.get("resolution_notes", "")
+        resolved_by = payload.get("resolved_by", "system")
+        
+        violation = self._violations.get(violation_id)
+        if not violation:
+            raise ValueError(f"Violation not found: {violation_id}")
+        
+        violation.resolved = True
+        violation.resolved_at = datetime.utcnow()
+        
+        await self._add_audit_entry(
+            action="resolve_violation",
+            actor_id=resolved_by,
+            actor_type="user",
+            entity_id=violation_id,
+            entity_type="violation",
+            details={
+                "violation_id": violation_id,
+                "resolution_notes": resolution_notes
+            }
+        )
+        
+        return {"violation_id": violation_id, "resolved": True}
+    
+    async def _handle_get_audit_trail(self, task: 'Task') -> List[Dict[str, Any]]:
+        """Get audit trail"""
+        payload = task.payload
+        
+        entity_id = payload.get("entity_id")
+        action = payload.get("action")
+        start_date = payload.get("start_date")
+        end_date = payload.get("end_date")
+        limit = payload.get("limit", 100)
+        
+        entries = self._audit_trail.copy()
+        
+        if entity_id:
+            entries = [e for e in entries if e.entity_id == entity_id]
+        
+        if action:
+            entries = [e for e in entries if e.action == action]
+        
+        if start_date:
+            start = datetime.fromisoformat(start_date)
+            entries = [e for e in entries if e.timestamp >= start]
+        
+        if end_date:
+            end = datetime.fromisoformat(end_date)
+            entries = [e for e in entries if e.timestamp <= end]
+        
+        entries.sort(key=lambda e: e.timestamp, reverse=True)
+        
+        return [
+            {
+                "id": e.id,
+                "timestamp": e.timestamp.isoformat(),
+                "action": e.action,
+                "actor_id": e.actor_id,
+                "entity_id": e.entity_id,
+                "details": e.details
+            }
+            for e in entries[:limit]
+        ]
+    
+    # ========================================================================
+    # CORE COMPLIANCE METHODS
+    # ========================================================================
+    
+    async def assess_compliance(
+        self,
+        entity: Dict[str, Any],
+        entity_id: str,
+        entity_type: str,
+        entity_name: str,
+        frameworks: List[RegulatoryFramework],
+        jurisdiction: str
+    ) -> ComplianceAssessment:
+        """
+        Perform comprehensive compliance assessment
+        """
+        start_time = datetime.utcnow()
+        
+        violations: List[Violation] = []
+        warnings: List[Dict[str, Any]] = []
+        rules_evaluated = 0
+        rules_passed = 0
+        rules_failed = 0
+        rules_not_applicable = 0
+        risk_factors: List[Dict[str, Any]] = []
+        
+        # Get applicable rules
+        applicable_rules = await self._get_applicable_rules(
+            entity_type=entity_type,
+            jurisdiction=jurisdiction,
+            frameworks=frameworks
+        )
+        
+        # Evaluate each rule
+        for rule in applicable_rules:
+            rules_evaluated += 1
+            
+            try:
+                result = await self._evaluate_rule(entity, rule)
+                
+                if result["applicable"] is False:
+                    rules_not_applicable += 1
+                    continue
+                
+                if result["compliant"]:
+                    rules_passed += 1
+                else:
+                    rules_failed += 1
+                    
+                    # Create violation
+                    violation = Violation(
+                        id=f"viol_{hashlib.md5(f'{entity_id}_{rule.id}_{start_time}'.encode()).hexdigest()[:12]}",
+                        regulation_id=rule.regulation_id,
+                        regulation_code=rule.regulation_code,
+                        rule_id=rule.id,
+                        severity=rule.severity,
+                        title=rule.name,
+                        description=result.get("description", rule.description),
+                        evidence=result.get("evidence", []),
+                        remediation=rule.remediation_guidance,
+                        deadline=datetime.utcnow() + timedelta(days=rule.remediation_deadline_days),
+                        entity_id=entity_id,
+                        entity_type=entity_type,
+                        field_path=result.get("field_path"),
+                        actual_value=result.get("actual_value"),
+                        expected_value=result.get("expected_value"),
+                        risk_score=rule.severity.weight * 10
+                    )
+                    
+                    violations.append(violation)
+                    self._violations[violation.id] = violation
+                    
+                    # Add risk factor
+                    risk_factors.append({
+                        "rule_id": rule.id,
+                        "severity": rule.severity.name,
+                        "framework": rule.framework.value,
+                        "risk_contribution": rule.severity.weight
+                    })
+                
+                # Check for warnings
+                if result.get("warning"):
+                    warnings.append({
+                        "rule_id": rule.id,
+                        "message": result["warning"]
+                    })
+                    
+            except Exception as e:
+                warnings.append({
+                    "rule_id": rule.id,
+                    "message": f"Evaluation error: {str(e)}"
+                })
+        
+        # Calculate compliance score
+        if rules_evaluated - rules_not_applicable > 0:
+            compliance_score = (
+                rules_passed / (rules_evaluated - rules_not_applicable)
+            ) * 100
+        else:
+            compliance_score = 100.0
+        
+        # Adjust for severity
+        severity_penalty = sum(v.severity.weight for v in violations)
+        compliance_score = max(0, compliance_score - severity_penalty)
+        
+        # Determine compliance level
+        compliance_level = ComplianceLevel.from_score(compliance_score)
+        
+        # Calculate overall risk score
+        overall_risk_score = min(100, sum(f["risk_contribution"] for f in risk_factors))
+        
+        # Generate recommendations
+        recommendations = await self._generate_recommendations(
+            violations=violations,
+            entity_type=entity_type,
+            compliance_score=compliance_score
+        )
+        
+        # Identify priority actions
+        priority_actions = await self._identify_priority_actions(
+            violations=violations,
+            risk_factors=risk_factors
+        )
+        
+        # Create assessment
+        assessment = ComplianceAssessment(
+            id=f"assess_{entity_id}_{start_time.strftime('%Y%m%d%H%M%S')}",
+            entity_id=entity_id,
+            entity_type=entity_type,
+            entity_name=entity_name,
+            frameworks_assessed=frameworks,
+            jurisdiction=jurisdiction,
+            assessment_date=start_time,
+            compliance_level=compliance_level,
+            compliance_score=round(compliance_score, 2),
+            violations=violations,
+            warnings=warnings,
+            rules_evaluated=rules_evaluated,
+            rules_passed=rules_passed,
+            rules_failed=rules_failed,
+            rules_not_applicable=rules_not_applicable,
+            overall_risk_score=round(overall_risk_score, 2),
+            risk_factors=risk_factors,
+            recommendations=recommendations,
+            priority_actions=priority_actions,
+            assessor_agent_id=self.agent_id,
+            duration_ms=(datetime.utcnow() - start_time).total_seconds() * 1000
+        )
+        
+        # Store assessment
+        self._assessments[assessment.id] = assessment
+        
+        # Add audit entry
+        await self._add_audit_entry(
+            action="compliance_assessment",
+            actor_id=self.agent_id,
+            actor_type="agent",
+            entity_id=entity_id,
+            entity_type=entity_type,
+            details={
+                "assessment_id": assessment.id,
+                "compliance_level": compliance_level.value,
+                "compliance_score": compliance_score,
+                "violations_count": len(violations)
+            }
+        )
+        
+        # Emit event for critical violations
+        if compliance_level == ComplianceLevel.CRITICAL_NON_COMPLIANCE:
+            await self._emit_critical_alert(assessment)
+        
+        return assessment
+    
+    async def validate_api_response(
+        self,
+        api_name: str,
+        response_data: Dict[str, Any],
+        requirements: List[str]
+    ) -> Dict[str, Any]:
+        """Validate API response against requirements"""
+        validation_results = {
+            "api_name": api_name,
+            "timestamp": datetime.utcnow().isoformat(),
+            "valid": True,
+            "checks": [],
+            "warnings": [],
+            "errors": []
+        }
+        
+        for req_id in requirements:
+            rule = self._rules.get(req_id)
+            if not rule:
+                validation_results["warnings"].append(f"Unknown requirement: {req_id}")
+                continue
+            
+            try:
+                result = await self._evaluate_rule(response_data, rule)
+                
+                check_result = {
+                    "requirement_id": req_id,
+                    "requirement_code": rule.regulation_code,
+                    "passed": result["compliant"],
+                    "details": result.get("description", "")
+                }
+                
+                validation_results["checks"].append(check_result)
+                
+                if not result["compliant"]:
+                    validation_results["valid"] = False
+                    validation_results["errors"].append({
+                        "requirement": rule.regulation_code,
+                        "error": result.get("description", "Validation failed")
+                    })
+                    
+            except Exception as e:
+                validation_results["warnings"].append(
+                    f"Validation error for {req_id}: {str(e)}"
+                )
+        
+        return validation_results
+    
+    async def audit_data_handling(
+        self,
+        data_flow: Dict[str, Any],
+        regulations: List[str]
+    ) -> Dict[str, Any]:
+        """Audit data handling practices"""
+        audit_id = f"audit_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        
+        findings: List[Dict[str, Any]] = []
+        
+        # Audit each stage
+        stages = ["collection", "storage", "processing", "transmission", "retention", "deletion"]
+        
+        for stage in stages:
+            stage_data = data_flow.get(stage, {})
+            if not stage_data:
+                continue
+            
+            stage_findings = await self._audit_stage(
+                stage=stage,
+                stage_data=stage_data,
+                regulations=regulations
+            )
+            findings.extend(stage_findings)
+        
+        # Calculate risk score
+        risk_score = self._calculate_audit_risk_score(findings)
+        
+        return {
+            "audit_id": audit_id,
+            "timestamp": datetime.utcnow().isoformat(),
+            "data_flow_id": data_flow.get("id"),
+            "stages_audited": stages,
+            "findings": findings,
+            "findings_by_severity": self._group_findings_by_severity(findings),
+            "risk_score": risk_score,
+            "compliant": risk_score < 50,
+            "recommendations": self._generate_audit_recommendations(findings)
+        }
+    
+    async def generate_compliance_report(
+        self,
+        entity_id: str,
+        report_type: str,
+        period: Dict[str, str]
+    ) -> Dict[str, Any]:
+        """Generate compliance report"""
+        start_date = datetime.fromisoformat(period.get("start", "2020-01-01"))
+        end_date = datetime.fromisoformat(period.get("end", datetime.utcnow().isoformat()))
+        
+        # Get relevant assessments
+        assessments = [
+            a for a in self._assessments.values()
+            if a.entity_id == entity_id
+            and start_date <= a.assessment_date <= end_date
+        ]
+        
+        # Get relevant violations
+        violations = [
+            v for v in self._violations.values()
+            if v.entity_id == entity_id
+            and start_date <= v.detected_at <= end_date
+        ]
+        
+        if report_type == "summary":
+            return await self._generate_summary_report(
+                entity_id, assessments, violations, period
+            )
+        elif report_type == "detailed":
+            return await self._generate_detailed_report(
+                entity_id, assessments, violations, period
+            )
+        elif report_type == "executive":
+            return await self._generate_executive_report(
+                entity_id, assessments, violations, period
+            )
+        else:
+            return await self._generate_summary_report(
+                entity_id, assessments, violations, period
+            )
+    
+    async def check_regulatory_deadlines(
+        self,
+        entity_id: str
+    ) -> Dict[str, Any]:
+        """Check upcoming regulatory deadlines"""
+        now = datetime.utcnow()
+        
+        # Get open violations with deadlines
+        open_violations = [
+            v for v in self._violations.values()
+            if v.entity_id == entity_id
+            and not v.resolved
+            and v.deadline
+        ]
+        
+        deadlines = []
+        for violation in open_violations:
+            days_remaining = (violation.deadline - now).days
+            
+            deadlines.append({
+                "violation_id": violation.id,
+                "regulation": violation.regulation_code,
+                "description": violation.title,
+                "deadline": violation.deadline.isoformat(),
+                "days_remaining": days_remaining,
+                "status": self._get_deadline_status(days_remaining),
+                "priority": "critical" if days_remaining < 7 else "high" if days_remaining < 30 else "normal",
+                "severity": violation.severity.name
+            })
+        
+        # Sort by urgency
+        deadlines.sort(key=lambda d: d["days_remaining"])
+        
+        overdue = [d for d in deadlines if d["days_remaining"] < 0]
+        urgent = [d for d in deadlines if 0 <= d["days_remaining"] < 7]
+        upcoming = [d for d in deadlines if 7 <= d["days_remaining"] < 30]
+        
+        return {
+            "entity_id": entity_id,
+            "checked_at": now.isoformat(),
+            "deadlines": deadlines,
+            "summary": {
+                "total": len(deadlines),
+                "overdue": len(overdue),
+                "urgent": len(urgent),
+                "upcoming": len(upcoming)
+            },
+            "overdue_items": overdue,
+            "urgent_items": urgent
+        }
+    
+    # ========================================================================
+    # RULE EVALUATION
+    # ========================================================================
+    
+    async def _evaluate_rule(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule
+    ) -> Dict[str, Any]:
+        """Evaluate a single compliance rule"""
+        result = {
+            "rule_id": rule.id,
+            "applicable": True,
+            "compliant": True,
+            "description": None,
+            "evidence": [],
+            "field_path": rule.field_path,
+            "actual_value": None,
+            "expected_value": rule.expected_value
+        }
+        
+        # Check conditions
+        if rule.conditions:
+            for condition in rule.conditions:
+                if not self._check_condition(entity, condition):
+                    result["applicable"] = False
+                    return result
+        
+        # Evaluate based on check type
+        if rule.check_type == "presence":
+            result = await self._evaluate_presence(entity, rule, result)
+        elif rule.check_type == "value":
+            result = await self._evaluate_value(entity, rule, result)
+        elif rule.check_type == "pattern":
+            result = await self._evaluate_pattern(entity, rule, result)
+        elif rule.check_type == "range":
+            result = await self._evaluate_range(entity, rule, result)
+        elif rule.check_type == "custom":
+            result = await self._evaluate_custom(entity, rule, result)
+        else:
+            result["warning"] = f"Unknown check type: {rule.check_type}"
+        
+        return result
+    
+    async def _evaluate_presence(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule,
+        result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Evaluate presence check"""
+        value = self._get_nested_value(entity, rule.field_path)
+        result["actual_value"] = value
+        
+        is_present = value is not None and value != "" and value != []
+        
+        if not is_present:
+            result["compliant"] = False
+            result["description"] = f"Required field '{rule.field_path}' is missing or empty"
+            result["evidence"].append({
+                "type": "missing_field",
+                "field": rule.field_path
+            })
+        
+        return result
+    
+    async def _evaluate_value(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule,
+        result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Evaluate value check"""
+        value = self._get_nested_value(entity, rule.field_path)
+        result["actual_value"] = value
+        
+        expected = rule.expected_value
+        
+        # Handle list of acceptable values
+        if isinstance(expected, list):
+            if value not in expected:
+                result["compliant"] = False
+                result["description"] = (
+                    f"Field '{rule.field_path}' has value '{value}', "
+                    f"expected one of: {expected}"
+                )
+        else:
+            if value != expected:
+                result["compliant"] = False
+                result["description"] = (
+                    f"Field '{rule.field_path}' has value '{value}', "
+                    f"expected: '{expected}'"
+                )
+        
+        if not result["compliant"]:
+            result["evidence"].append({
+                "type": "value_mismatch",
+                "field": rule.field_path,
+                "actual": value,
+                "expected": expected
+            })
+        
+        return result
+    
+    async def _evaluate_pattern(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule,
+        result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Evaluate pattern match"""
+        value = self._get_nested_value(entity, rule.field_path)
+        result["actual_value"] = value
+        
+        if value is None:
+            result["compliant"] = False
+            result["description"] = f"Field '{rule.field_path}' is missing"
+            return result
+        
+        pattern = rule.pattern
+        if not re.match(pattern, str(value)):
+            result["compliant"] = False
+            result["description"] = (
+                f"Field '{rule.field_path}' value '{value}' "
+                f"does not match required pattern"
+            )
+            result["evidence"].append({
+                "type": "pattern_mismatch",
+                "field": rule.field_path,
+                "actual": value,
+                "pattern": pattern
+            })
+        
+        return result
+    
+    async def _evaluate_range(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule,
+        result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Evaluate range check"""
+        value = self._get_nested_value(entity, rule.field_path)
+        result["actual_value"] = value
+        
+        if value is None:
+            result["compliant"] = False
+            result["description"] = f"Field '{rule.field_path}' is missing"
+            return result
+        
+        expected = rule.expected_value
+        min_val = expected.get("min")
+        max_val = expected.get("max")
+        
+        try:
+            num_value = float(value)
+            
+            if min_val is not None and num_value < min_val:
+                result["compliant"] = False
+                result["description"] = (
+                    f"Field '{rule.field_path}' value {value} "
+                    f"is below minimum {min_val}"
+                )
+            elif max_val is not None and num_value > max_val:
+                result["compliant"] = False
+                result["description"] = (
+                    f"Field '{rule.field_path}' value {value} "
+                    f"exceeds maximum {max_val}"
+                )
+                
+        except (TypeError, ValueError):
+            result["compliant"] = False
+            result["description"] = (
+                f"Field '{rule.field_path}' value '{value}' "
+                f"is not a valid number"
+            )
+        
+        return result
+    
+    async def _evaluate_custom(
+        self,
+        entity: Dict[str, Any],
+        rule: ComplianceRule,
+        result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Evaluate custom check"""
+        evaluator = self._custom_evaluators.get(rule.custom_evaluator)
+        
+        if not evaluator:
+            result["warning"] = f"Custom evaluator not found: {rule.custom_evaluator}"
+            return result
+        
+        try:
+            custom_result = await evaluator(entity, rule)
+            result.update(custom_result)
+        except Exception as e:
+            result["compliant"] = False
+            result["description"] = f"Custom evaluation error: {str(e)}"
+        
+        return result
+    
+    # ========================================================================
+    # HELPER METHODS
+    # ========================================================================
+    
+    def _get_nested_value(
+        self,
+        data: Dict[str, Any],
+        path: str
+    ) -> Any:
+        """Get nested value from dict using dot notation"""
+        if not path:
+            return data
+        
+        keys = path.split(".")
+        value = data
+        
+        for key in keys:
+            if isinstance(value, dict):
+                value = value.get(key)
+            elif isinstance(value, list):
+                try:
+                    idx = int(key)
+                    value = value[idx] if idx < len(value) else None
+                except ValueError:
+                    value = None
+            else:
+                value = None
+            
+            if value is None:
+                break
+        
+        return value
+    
+    def _check_condition(
+        self,
+        entity: Dict[str, Any],
+        condition: Dict[str, Any]
+    ) -> bool:
+        """Check if condition is met"""
+        field = condition.get("field")
+        operator = condition.get("operator", "equals")
+        value = condition.get("value")
+        
+        actual = self._get_nested_value(entity, field)
+        
+        if operator == "equals":
+            return actual == value
+        elif operator == "not_equals":
+            return actual != value
+        elif operator == "contains":
+            return value in actual if actual else False
+        elif operator == "exists":
+            return actual is not None
+        elif operator == "not_exists":
+            return actual is None
+        elif operator == "in":
+            return actual in value if isinstance(value, list) else False
+        
+        return True
+    
+    async def _get_applicable_rules(
+        self,
+        entity_type: str,
+        jurisdiction: str,
+        frameworks: List[RegulatoryFramework]
+    ) -> List[ComplianceRule]:
+        """Get rules applicable to entity"""
+        applicable = []
+        
+        for rule in self._rules.values():
+            if rule.framework not in frameworks:
+                continue
+            
+            if rule.is_applicable(entity_type, jurisdiction):
+                applicable.append(rule)
+        
+        return applicable
+    
+    async def _generate_recommendations(
+        self,
+        violations: List[Violation],
+        entity_type: str,
+        compliance_score: float
+    ) -> List[str]:
+        """Generate recommendations based on violations"""
+        recommendations = []
+        
+        # Group violations by severity
+        critical = [v for v in violations if v.severity == ViolationSeverity.CRITICAL]
+        high = [v for v in violations if v.severity == ViolationSeverity.HIGH]
+        
+        if critical:
+            recommendations.append(
+                f"IMMEDIATE ACTION REQUIRED: Address {len(critical)} critical violations"
+            )
+        
+        if high:
+            recommendations.append(
+                f"HIGH PRIORITY: Remediate {len(high)} high-severity findings"
+            )
+        
+        # Framework-specific recommendations
+        frameworks_violated = set(v.regulation_code.split("_")[0] for v in violations)
+        
+        for fw in frameworks_violated:
+            if fw == "CCPA":
+                recommendations.append(
+                    "Review and update privacy notices and data collection practices"
+                )
+            elif fw == "FISMA":
+                recommendations.append(
+                    "Conduct security control assessment and update system security plan"
+                )
+            elif fw == "FOIA":
+                recommendations.append(
+                    "Review FOIA response procedures and proactive disclosure policies"
+                )
+        
+        # Score-based recommendations
+        if compliance_score < 60:
+            recommendations.append(
+                "Consider engaging compliance specialists for comprehensive remediation"
+            )
+        
+        return recommendations[:10]  # Limit to top 10
+    
+    async def _identify_priority_actions(
+        self,
+        violations: List[Violation],
+        risk_factors: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """Identify priority remediation actions"""
+        actions = []
+        
+        # Sort violations by severity and deadline
+        sorted_violations = sorted(
+            violations,
+            key=lambda v: (v.severity.weight, v.deadline or datetime.max),
+            reverse=True
+        )
+        
+        for violation in sorted_violations[:5]:  # Top 5 priority actions
+            actions.append({
+                "violation_id": violation.id,
+                "action": violation.remediation,
+                "deadline": violation.deadline.isoformat() if violation.deadline else None,
+                "severity": violation.severity.name,
+                "regulation": violation.regulation_code
+            })
+        
+        return actions
+    
+    async def _emit_critical_alert(self, assessment: ComplianceAssessment):
+        """Emit alert for critical compliance issues"""
+        if self._orchestrator:
+            from core.orchestrator import SystemEvent, EventType
+            
+            await self._orchestrator.event_emitter.emit(SystemEvent(
+                event_type=EventType.COMPLIANCE_VIOLATION,
+                source=self.agent_id,
+                data={
+                    "assessment_id": assessment.id,
+                    "entity_id": assessment.entity_id,
+                    "compliance_level": assessment.compliance_level.value,
+                    "critical_violations": [
+                        v.to_dict() for v in assessment.violations
+                        if v.severity == ViolationSeverity.CRITICAL
+                    ]
+                }
+            ))
+    
+    async def _add_audit_entry(
+        self,
+        action: str,
+        actor_id: str,
+        actor_type: str,
+        entity_id: str,
+        entity_type: str,
+        details: Dict[str, Any]
+    ):
+        """Add audit trail entry"""
+        entry = AuditTrail(
+            id=f"audit_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{len(self._audit_trail)}",
+            timestamp=datetime.utcnow(),
+            action=action,
+            actor_id=actor_id,
+            actor_type=actor_type,
+            entity_id=entity_id,
+            entity_type=entity_type,
+            details=details
+        )
+        
+        self._audit_trail.append(entry)
+        
+        # Trim old entries
+        if len(self._audit_trail) > 10000:
+            self._audit_trail = self._audit_trail[-10000:]
+    
+    async def _audit_stage(
+        self,
+        stage: str,
+        stage_data: Dict[str, Any],
+        regulations: List[str]
+    ) -> List[Dict[str, Any]]:
+        """Audit a specific data handling stage"""
+        findings = []
+        
+        # Stage-specific checks
+        if stage == "collection":
+            if not stage_data.get("consent_mechanism"):
+                findings.append({
+                    "stage": stage,
+                    "type": "missing_control",
+                    "severity": "high",
+                    "finding": "No consent mechanism implemented for data collection",
+                    "regulation": "CCPA/GDPR"
+                })
+            
+            if not stage_data.get("purpose_specification"):
+                findings.append({
+                    "stage": stage,
+                    "type": "missing_control",
+                    "severity": "medium",
+                    "finding": "Data collection purpose not specified",
+                    "regulation": "DATA_Act"
+                })
+        
+        elif stage == "storage":
+            if not stage_data.get("encryption_at_rest"):
+                findings.append({
+                    "stage": stage,
+                    "type": "security_gap",
+                    "severity": "critical",
+                    "finding": "Data not encrypted at rest",
+                    "regulation": "FISMA"
+                })
+            
+            if not stage_data.get("access_controls"):
+                findings.append({
+                    "stage": stage,
+                    "type": "security_gap",
+                    "severity": "high",
+                    "finding": "No access controls implemented",
+                    "regulation": "NIST_800-53"
+                })
+        
+        elif stage == "transmission":
+            if not stage_data.get("tls_enabled"):
+                findings.append({
+                    "stage": stage,
+                    "type": "security_gap",
+                    "severity": "critical",
+                    "finding": "TLS not enabled for data transmission",
+                    "regulation": "FISMA"
+                })
+        
+        elif stage == "retention":
+            if not stage_data.get("retention_policy"):
+                findings.append({
+                    "stage": stage,
+                    "type": "policy_gap",
+                    "severity": "medium",
+                    "finding": "No data retention policy defined",
+                    "regulation": "NARA"
+                })
+            
+            if not stage_data.get("retention_schedule"):
+                findings.append({
+                    "stage": stage,
+                    "type": "policy_gap",
+                    "severity": "medium",
+                    "finding": "No retention schedule established",
+                    "regulation": "NARA"
+                })
+        
+        elif stage == "deletion":
+            if not stage_data.get("secure_deletion"):
+                findings.append({
+                    "stage": stage,
+                    "type": "security_gap",
+                    "severity": "high",
+                    "finding": "Secure deletion not implemented",
+                    "regulation": "NIST_800-88"
+                })
+        
+        return findings
+    
+    def _calculate_audit_risk_score(self, findings: List[Dict[str, Any]]) -> float:
+        """Calculate audit risk score"""
+        severity_scores = {
+            "critical": 25,
+            "high": 15,
+            "medium": 8,
+            "low": 3,
+            "informational": 1
+        }
+        
+        total = sum(
+            severity_scores.get(f.get("severity", "low"), 0)
+            for f in findings
+        )
+        
+        return min(total, 100)
+    
+    def _group_findings_by_severity(
+        self,
+        findings: List[Dict[str, Any]]
+    ) -> Dict[str, int]:
+        """Group findings by severity"""
+        groups = {"critical": 0, "high": 0, "medium": 0, "low": 0, "informational": 0}
+        
+        for finding in findings:
+            severity = finding.get("severity", "low")
+            if severity in groups:
+                groups[severity] += 1
+        
+        return groups
+    
+    def _generate_audit_recommendations(
+        self,
+        findings: List[Dict[str, Any]]
+    ) -> List[str]:
+        """Generate recommendations from audit findings"""
+        recommendations = []
+        
+        stages_with_issues = set(f.get("stage") for f in findings)
+        
+        if "collection" in stages_with_issues:
+            recommendations.append(
+                "Implement comprehensive consent management and purpose specification"
+            )
+        
+        if "storage" in stages_with_issues:
+            recommendations.append(
+                "Enable encryption at rest and implement role-based access controls"
+            )
+        
+        if "transmission" in stages_with_issues:
+            recommendations.append(
+                "Enable TLS 1.2+ for all data transmission channels"
+            )
+        
+        if "retention" in stages_with_issues:
+            recommendations.append(
+                "Develop and implement data retention policy and schedule"
+            )
+        
+        if "deletion" in stages_with_issues:
+            recommendations.append(
+                "Implement secure deletion procedures per NIST 800-88"
+            )
+        
+        return recommendations
+    
+    def _get_deadline_status(self, days_remaining: int) -> str:
+        """Get deadline status label"""
+        if days_remaining < 0:
+            return "overdue"
+        elif days_remaining == 0:
+            return "due_today"
+        elif days_remaining < 7:
+            return "urgent"
+        elif days_remaining < 30:
+            return "approaching"
+        else:
+            return "scheduled"
+    
+    async def _generate_summary_report(
+        self,
+        entity_id: str,
+        assessments: List[ComplianceAssessment],
+        violations: List[Violation],
+        period: Dict[str, str]
+    ) -> Dict[str, Any]:
+        """Generate summary report"""
+        if not assessments:
+            return {
+                "report_type": "summary",
+                "entity_id": entity_id,
+                "period": period,
+                "status": "no_data",
+                "message": "No assessments found for the specified period"
+            }
+        
+        latest = max(assessments, key=lambda a: a.assessment_date)
+        
+        # Calculate trends
+        scores = [a.compliance_score for a in sorted(assessments, key=lambda a: a.assessment_date)]
+        if len(scores) >= 2:
+            trend = "improving" if scores[-1] > scores[0] else "declining" if scores[-1] < scores[0] else "stable"
+        else:
+            trend = "insufficient_data"
+        
+        open_violations = [v for v in violations if not v.resolved]
+        resolved_violations = [v for v in violations if v.resolved]
+        
+        return {
+            "report_type": "summary",
+            "report_id": f"report_{entity_id}_{datetime.utcnow().strftime('%Y%m%d')}",
+            "entity_id": entity_id,
+            "period": period,
+            "generated_at": datetime.utcnow().isoformat(),
+            "current_status": {
+                "compliance_level": latest.compliance_level.value,
+                "compliance_score": latest.compliance_score,
+                "as_of": latest.assessment_date.isoformat()
+            },
+            "summary": {
+                "total_assessments": len(assessments),
+                "total_violations": len(violations),
+                "open_violations": len(open_violations),
+                "resolved_violations": len(resolved_violations),
+                "average_score": round(sum(a.compliance_score for a in assessments) / len(assessments), 2),
+                "trend": trend
+            },
+            "violations_by_severity": {
+                severity.name: len([v for v in open_violations if v.severity == severity])
+                for severity in ViolationSeverity
+            },
+            "recommendations": latest.recommendations[:5]
+        }
+    
+    async def _generate_detailed_report(
+        self,
+        entity_id: str,
+        assessments: List[ComplianceAssessment],
+        violations: List[Violation],
+        period: Dict[str, str]
+    ) -> Dict[str, Any]:
+        """Generate detailed report"""
+        summary = await self._generate_summary_report(entity_id, assessments, violations, period)
+        
+        summary["report_type"] = "detailed"
+        summary["assessments"] = [a.to_dict() for a in assessments]
+        summary["all_violations"] = [v.to_dict() for v in violations]
+        summary["timeline"] = [
+            {
+                "date": a.assessment_date.isoformat(),
+                "score": a.compliance_score,
+                "violations": len(a.violations)
+            }
+            for a in sorted(assessments, key=lambda a: a.assessment_date)
+        ]
+        
+        return summary
+    
+    async def _generate_executive_report(
+        self,
+        entity_id: str,
+        assessments: List[ComplianceAssessment],
+        violations: List[Violation],
+        period: Dict[str, str]
+    ) -> Dict[str, Any]:
+        """Generate executive summary report"""
+        summary = await self._generate_summary_report(entity_id, assessments, violations, period)
+        
+        summary["report_type"] = "executive"
+        
+        # Add executive-level insights
+        open_critical = [v for v in violations if not v.resolved and v.severity == ViolationSeverity.CRITICAL]
+        
+        summary["executive_summary"] = {
+            "compliance_status": summary["current_status"]["compliance_level"],
+            "critical_issues": len(open_critical),
+            "risk_exposure": "HIGH" if open_critical else "MODERATE" if summary["summary"]["open_violations"] > 5 else "LOW",
+            "key_actions": summary["recommendations"][:3]
+        }
+        
+        return summary
+    
+    async def _continuous_monitoring_loop(self):
+        """Background loop for continuous compliance monitoring"""
+        while self.state.lifecycle not in {
+            self.state.lifecycle.STOPPING,
+            self.state.lifecycle.STOPPED
+        }:
+            try:
+                for entity_id in list(self._monitored_entities):
+                    # Get cached entity data
+                    entity = self._entity_cache.get(entity_id)
+                    if not entity:
+                        continue
+                    
+                    # Run quick compliance check
+                    # In production, this would be more sophisticated
+                    pass
+                
+                await asyncio.sleep(self._monitoring_interval_seconds)
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                await asyncio.sleep(60)
+    
+    # ========================================================================
+    # RULE LOADING
+    # ========================================================================
+    
+    async def _load_compliance_rules(self):
+        """Load compliance rules"""
+        # Federal Data Privacy Rules
+        self._add_rule(ComplianceRule(
+            id="privacy_act_disclosure",
+            regulation_id="PA_552a_e_3",
+            regulation_code="5 U.S.C. § 552a(e)(3)",
+            framework=RegulatoryFramework.PRIVACY_ACT,
+            name="Privacy Act Notice Requirement",
+            description="Agencies must inform individuals of the authority for collecting information",
+            requirement_text="Each agency that maintains a system of records shall inform each individual whom it asks to supply information...",
+            check_type="presence",
+            field_path="privacy_notice.authority_statement",
+            severity=ViolationSeverity.HIGH,
+            entity_types=["government_agency", "federal_contractor"],
+            jurisdictions=["federal"],
+            remediation_guidance="Add authority statement to privacy notice including statutory or executive order authority",
+            citations=["5 U.S.C. § 552a(e)(3)"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="ccpa_right_to_know",
+            regulation_id="CCPA_1798_100",
+            regulation_code="Cal. Civ. Code § 1798.100",
+            framework=RegulatoryFramework.CCPA,
+            name="Consumer Right to Know",
+            description="Consumers have the right to know what personal information is collected",
+            requirement_text="A consumer shall have the right to request that a business that collects personal information...",
+            check_type="presence",
+            field_path="privacy_policy.data_collection_disclosure",
+            severity=ViolationSeverity.HIGH,
+            entity_types=["business", "contractor"],
+            jurisdictions=["california", "federal"],
+            remediation_guidance="Disclose categories of personal information collected in privacy policy",
+            remediation_deadline_days=45,
+            citations=["Cal. Civ. Code § 1798.100"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="ccpa_right_to_delete",
+            regulation_id="CCPA_1798_105",
+            regulation_code="Cal. Civ. Code § 1798.105",
+            framework=RegulatoryFramework.CCPA,
+            name="Consumer Right to Delete",
+            description="Consumers have the right to request deletion of personal information",
+            requirement_text="A consumer shall have the right to request that a business delete any personal information...",
+            check_type="presence",
+            field_path="data_handling.deletion_mechanism",
+            severity=ViolationSeverity.HIGH,
+            entity_types=["business", "contractor"],
+            jurisdictions=["california", "federal"],
+            remediation_guidance="Implement consumer data deletion request mechanism",
+            remediation_deadline_days=45,
+            citations=["Cal. Civ. Code § 1798.105"]
+        ))
+        
+        # FISMA Security Rules
+        self._add_rule(ComplianceRule(
+            id="fisma_access_control",
+            regulation_id="FISMA_AC_2",
+            regulation_code="NIST 800-53 AC-2",
+            framework=RegulatoryFramework.FISMA,
+            name="Account Management",
+            description="Organizations must manage information system accounts",
+            requirement_text="The organization manages information system accounts, including establishing, activating, modifying...",
+            check_type="presence",
+            field_path="security_controls.account_management",
+            severity=ViolationSeverity.CRITICAL,
+            entity_types=["government_agency", "federal_contractor", "api_endpoint"],
+            jurisdictions=["federal"],
+            remediation_guidance="Implement comprehensive account management procedures per NIST 800-53 AC-2",
+            citations=["NIST SP 800-53 Rev. 5", "44 U.S.C. § 3554"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="fisma_encryption_transit",
+            regulation_id="FISMA_SC_8",
+            regulation_code="NIST 800-53 SC-8",
+            framework=RegulatoryFramework.FISMA,
+            name="Transmission Confidentiality",
+            description="Protect the confidentiality of transmitted information",
+            requirement_text="The information system protects the confidentiality of transmitted information.",
+            check_type="value",
+            field_path="security_controls.encryption_in_transit",
+            expected_value=True,
+            severity=ViolationSeverity.CRITICAL,
+            entity_types=["government_agency", "federal_contractor", "api_endpoint"],
+            jurisdictions=["federal"],
+            remediation_guidance="Enable TLS 1.2 or higher for all data transmission",
+            citations=["NIST SP 800-53 Rev. 5"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="fisma_encryption_rest",
+            regulation_id="FISMA_SC_28",
+            regulation_code="NIST 800-53 SC-28",
+            framework=RegulatoryFramework.FISMA,
+            name="Protection of Information at Rest",
+            description="Protect the confidentiality of information at rest",
+            requirement_text="The information system protects the confidentiality of information at rest.",
+            check_type="value",
+            field_path="security_controls.encryption_at_rest",
+            expected_value=True,
+            severity=ViolationSeverity.CRITICAL,
+            entity_types=["government_agency", "federal_contractor", "data_store"],
+            jurisdictions=["federal"],
+            remediation_guidance="Implement encryption for data at rest using FIPS 140-2 validated modules",
+            citations=["NIST SP 800-53 Rev. 5"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="fisma_audit_logging",
+            regulation_id="FISMA_AU_2",
+            regulation_code="NIST 800-53 AU-2",
+            framework=RegulatoryFramework.FISMA,
+            name="Audit Events",
+            description="Organizations must determine auditable events",
+            requirement_text="The organization determines that the information system is capable of auditing...",
+            check_type="presence",
+            field_path="security_controls.audit_logging",
+            severity=ViolationSeverity.HIGH,
+            entity_types=["government_agency", "federal_contractor", "api_endpoint"],
+            jurisdictions=["federal"],
+            remediation_guidance="Implement comprehensive audit logging per NIST 800-53 AU-2",
+            citations=["NIST SP 800-53 Rev. 5"]
+        ))
+        
+        # FOIA Rules
+        self._add_rule(ComplianceRule(
+            id="foia_reading_room",
+            regulation_id="FOIA_552_a_2",
+            regulation_code="5 U.S.C. § 552(a)(2)",
+            framework=RegulatoryFramework.FOIA,
+            name="Electronic Reading Room",
+            description="Agencies must make records available in electronic reading room",
+            requirement_text="Each agency shall make available for public inspection in an electronic format...",
+            check_type="presence",
+            field_path="foia_compliance.reading_room_url",
+            severity=ViolationSeverity.MEDIUM,
+            entity_types=["government_agency"],
+            jurisdictions=["federal"],
+            remediation_guidance="Establish electronic FOIA reading room with required records",
+            citations=["5 U.S.C. § 552(a)(2)"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="foia_response_time",
+            regulation_id="FOIA_552_a_6_A",
+            regulation_code="5 U.S.C. § 552(a)(6)(A)",
+            framework=RegulatoryFramework.FOIA,
+            name="Response Time Requirement",
+            description="Agencies must respond to FOIA requests within 20 working days",
+            requirement_text="Each agency shall determine within 20 days after the receipt of any such request...",
+            check_type="range",
+            field_path="foia_compliance.avg_response_days",
+            expected_value={"min": 0, "max": 20},
+            severity=ViolationSeverity.HIGH,
+            entity_types=["government_agency"],
+            jurisdictions=["federal"],
+            remediation_guidance="Review FOIA processing procedures to meet 20-day response requirement",
+            citations=["5 U.S.C. § 552(a)(6)(A)"]
+        ))
+        
+        # DATA Act Rules
+        self._add_rule(ComplianceRule(
+            id="data_act_standardization",
+            regulation_id="DATA_ACT_SEC_4",
+            regulation_code="Pub. L. 113-101 § 4",
+            framework=RegulatoryFramework.DATA_ACT,
+            name="Data Standards",
+            description="Federal agencies must use government-wide data standards",
+            requirement_text="The Director shall establish government-wide financial data standards...",
+            check_type="value",
+            field_path="data_standards.uses_standard_formats",
+            expected_value=True,
+            severity=ViolationSeverity.MEDIUM,
+            entity_types=["government_agency"],
+            jurisdictions=["federal"],
+            remediation_guidance="Implement DATA Act data standards for financial reporting",
+            citations=["Digital Accountability and Transparency Act of 2014"]
+        ))
+        
+        # Accessibility Rules
+        self._add_rule(ComplianceRule(
+            id="section_508_web",
+            regulation_id="508_1194_22",
+            regulation_code="36 CFR § 1194.22",
+            framework=RegulatoryFramework.SECTION_508,
+            name="Web Accessibility",
+            description="Web content must be accessible to people with disabilities",
+            requirement_text="Web pages shall conform to WCAG 2.0 Level AA...",
+            check_type="value",
+            field_path="accessibility.wcag_level",
+            expected_value=["AA", "AAA"],
+            severity=ViolationSeverity.HIGH,
+            entity_types=["government_agency", "federal_contractor", "api_endpoint"],
+            jurisdictions=["federal"],
+            remediation_guidance="Achieve WCAG 2.0 Level AA conformance for all web content",
+            citations=["Section 508 of the Rehabilitation Act", "WCAG 2.0"]
+        ))
+        
+        # HIPAA Rules (for health-related government APIs)
+        self._add_rule(ComplianceRule(
+            id="hipaa_phi_encryption",
+            regulation_id="HIPAA_164_312_a_2_iv",
+            regulation_code="45 CFR § 164.312(a)(2)(iv)",
+            framework=RegulatoryFramework.HIPAA,
+            name="PHI Encryption",
+            description="Implement mechanism to encrypt electronic PHI",
+            requirement_text="Implement a mechanism to encrypt and decrypt electronic protected health information.",
+            check_type="value",
+            field_path="hipaa_controls.phi_encryption",
+            expected_value=True,
+            severity=ViolationSeverity.CRITICAL,
+            entity_types=["healthcare_entity", "government_agency"],
+            jurisdictions=["federal"],
+            conditions=[{"field": "handles_phi", "operator": "equals", "value": True}],
+            remediation_guidance="Implement encryption for all electronic PHI per HIPAA requirements",
+            citations=["45 CFR § 164.312(a)(2)(iv)"]
+        ))
+        
+        self._add_rule(ComplianceRule(
+            id="hipaa_access_audit",
+            regulation_id="HIPAA_164_312_b",
+            regulation_code="45 CFR § 164.312(b)",
+            framework=RegulatoryFramework.HIPAA,
+            name="Audit Controls",
+            description="Implement audit controls for PHI access",
+            requirement_text="Implement hardware, software, and/or procedural mechanisms that record and examine activity...",
+            check_type="presence",
+            field_path="hipaa_controls.access_audit_logging",
+            severity=ViolationSeverity.CRITICAL,
+            entity_types=["healthcare_entity", "government_agency"],
+            jurisdictions=["federal"],
+            conditions=[{"field": "handles_phi", "operator": "equals", "value": True}],
+            remediation_guidance="Implement comprehensive audit logging for all PHI access",
+            citations=["45 CFR § 164.312(b)"]
+        ))
+        
+        # FAR Contracting Rules
+        self._add_rule(ComplianceRule(
+            id="far_sam_registration",
+            regulation_id="FAR_4_1102",
+            regulation_code="FAR 4.1102",
+            framework=RegulatoryFramework.FAR,
+            name="SAM Registration",
+            description="Contractors must be registered in SAM.gov",
+            requirement_text="Prospective contractors shall be registered in the SAM database...",
+            check_type="presence",
+            field_path="contracting.sam_registration",
+            severity=ViolationSeverity.HIGH,
+            entity_types=["contractor", "federal_contractor"],
+            jurisdictions=["federal"],
+            remediation_guidance="Register and maintain active SAM.gov registration",
+            citations=["FAR 4.1102"]
+        ))
+    
+    def _add_rule(self, rule: ComplianceRule):
+        """Add a rule to the rule base"""
+        self._rules[rule.id] = rule
+        
+        # Index by framework
+        if rule.framework not in self._rules_by_framework:
+            self._rules_by_framework[rule.framework] = []
+        self._rules_by_framework[rule.framework].append(rule.id)
+        
+        # Index by entity type
+        for entity_type in rule.entity_types:
+            if entity_type not in self._rules_by_entity_type:
+                self._rules_by_entity_type[entity_type] = []
+            self._rules_by_entity_type[entity_type].append(rule.id)
+    
+    async def _load_custom_evaluators(self):
+        """Load custom rule evaluators"""
+        
+        async def evaluate_data_retention_compliance(
+            entity: Dict[str, Any],
+            rule: ComplianceRule
+        ) -> Dict[str, Any]:
+            """Custom evaluator for data retention compliance"""
+            retention_policy = entity.get("data_retention", {})
+            
+            result = {
+                "compliant": True,
+                "description": None,
+                "evidence": []
+            }
+            
+            # Check retention period
+            retention_days = retention_policy.get("retention_days", 0)
+            max_allowed = 365 * 7  # 7 years default max
+            
+            if retention_days > max_allowed:
+                result["compliant"] = False
+                result["description"] = f"Retention period {retention_days} days exceeds maximum {max_allowed}"
+            
+            # Check deletion mechanism
+            if not retention_policy.get("auto_deletion_enabled"):
+                result["compliant"] = False
+                result["description"] = "Automatic deletion not enabled for expired data"
+            
+            return result
+        
+        self._custom_evaluators["data_retention_compliance"] = evaluate_data_retention_compliance
+```
+
+---
+
+This is getting extremely long. Let me continue with the remaining critical components in a structured way:
+
+## Additional Files to Complete
+
+Due to the extensive nature of this system, here's what remains to be implemented:
+
+### Remaining Agent Files:
+1. `agents/legal/statute_parser_agent.py` - Parse and analyze statutory text
+2. `agents/legal/case_law_agent.py` - Case law research and analysis
+3. `agents/legal/regulatory_agent.py` - Regulatory monitoring
+4. `agents/legal/citation_agent.py` - Legal citation parsing and validation
+5. `agents/monitoring/api_monitor_agent.py` - Full API monitoring (expanded)
+6. `agents/monitoring/schema_validator_agent.py` - JSON Schema validation
+7. `agents/monitoring/security_scan_agent.py` - Security vulnerability scanning
+8. `agents/analysis/reasoning_agent.py` - Legal reasoning (expanded)
+9. `agents/analysis/risk_assessment_agent.py` - Risk scoring
+10. `agents/analysis/nlp_agent.py` - Legal NLP processing
+11. `agents/workflow/audit_agent.py` - Audit management
+12. `agents/workflow/report_generator_agent.py` - Report generation
+13. `agents/workflow/notification_agent.py` - Alert notifications
+14. `agents/workflow/escalation_agent.py` - Issue escalation
+
+### Infrastructure Files:
+1. `infrastructure/database/models.py` - SQLAlchemy models
+2. `infrastructure/database/repositories.py` - Data access layer
+3. `infrastructure/messaging/event_bus.py` - Event bus implementation
+4. `infrastructure/cache/redis_cache.py` - Redis caching
+
+### NLP Files:
+1. `nlp/legal_tokenizer.py` - Legal text tokenization
+2. `nlp/citation_extractor.py` - Extract legal citations
+3. `nlp/entity_recognizer.py` - Legal entity NER
+
+### Rules Engine:
+1. `rules_engine/engine.py` - Rule execution engine
+2. `rules_engine/rule_parser.py` - YAML/JSON rule parsing
+
+### API Layer:
+1. `api/main.py` - FastAPI application
+2. `api/routes/*.py` - API endpoints
+
+---
+
