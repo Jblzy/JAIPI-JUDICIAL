@@ -1,0 +1,283 @@
+
+> **Government API & Legal Compliance Watchdog System**
+
+A sophisticated judicial monitoring and analysis platform featuring proprietary algorithms for legal reasoning, compliance scoring, and imprisonment timeline projections.
+
+---
+
+## 🏛️ System Overview
+
+JAIPI-JUDICIAL V4 is an enterprise-grade legal compliance monitoring system designed to provide real-time judicial data analysis, sentence computation, and regulatory compliance tracking. The platform integrates multiple proprietary algorithm suites that deliver unique, non-replicable outputs for government and legal institutions.
+
+### Core Capabilities
+
+- **Real-time Judicial Monitoring** — Live tracking of case statuses, sentence timelines, and compliance metrics
+- **Predictive Analytics** — AI-driven release confidence scoring and risk assessment
+- **Multi-Jurisdiction Support** — Federal, state, and county-level legal framework integration
+- **Automated Compliance Auditing** — Continuous regulatory adherence verification
+
+---
+
+## 🧮 Proprietary Algorithm Suite
+
+### Phase 1: Timeline & Sentence Analytics
+
+#### Adaptive Sentence Recalculation Matrix (ASRM)
+Dynamic sentence adjustment engine incorporating:
+- **Golden Ratio Weighting** (φ = 1.618033988749) for temporal calculations
+- **Euler Constant Integration** (e = 2.718281828459) for decay functions
+- **Jurisdiction Impact Scoring** with weighted multipliers
+- **Statutory Change Impact Analysis**
+- **Good Time Projection Engine**
+- **Retroactive Adjustment Calculator**
+
+#### Predictive Release Confidence System (PRCS)
+Multi-factor release prediction utilizing:
+- **JAIPI Prime Sequence** (2, 3, 5, 7, 11, 13, 17, 19, 23, 29) for stability indices
+- **Behavior Matrix Weighting**
+- **Program Completion Impact Scoring**
+- **Recidivism Risk Integration**
+- **Historical Pattern Analysis**
+
+#### Concurrent/Consecutive Sentence Aggregator
+Complex multi-charge sentence computation:
+- **Charge Stacking Logic** (concurrent vs consecutive)
+- **Overlap Period Calculation**
+- **Aggregate Minimum/Maximum Computation**
+- **Per-Charge Good Time Allocation**
+- **Federal vs State Guideline Differentiation**
+
+---
+
+### Phase 2: Legal Reasoning Engines
+
+#### Hierarchical Authority Resolver (HAR)
+Precedent authority determination across jurisdictional hierarchies:
+- Supreme Court binding authority
+- Circuit/Appellate court persuasive weight
+- District court reference scoring
+- State supreme court cross-jurisdiction analysis
+
+#### Legal Issue Decomposer (LID)
+Complex legal issue breakdown engine:
+- Multi-factor element extraction
+- Sub-issue dependency mapping
+- Evidentiary requirement linking
+- Burden of proof allocation
+
+#### Judicial Consistency Analyzer (JCAS)
+Historical ruling pattern analysis:
+- Judge-specific sentencing patterns
+- Variance detection from guidelines
+- Temporal trend identification
+- Case-type consistency scoring
+
+---
+
+### Phase 3: Precedent Analysis
+
+#### Semantic Distance-Based Citation (SDBC)
+Citation relevance scoring using:
+- Textual similarity metrics
+- Factual pattern matching
+- Legal principle alignment
+- Temporal relevance decay
+
+#### Doctrinal Fingerprint Detection (DFD)
+Legal doctrine identification and tracking:
+- Doctrine evolution mapping
+- Cross-jurisdictional doctrine variance
+- Emerging doctrine detection
+- Doctrine conflict identification
+
+---
+
+### Phase 4: Sentence Computation
+
+#### Mandatory Minimum Override Detector (MMOD)
+Safety valve and override identification:
+- Statutory mandatory minimum parsing
+- Judicial override eligibility
+- Prosecutorial discretion tracking
+- Cooperation credit calculation
+
+#### Good Time Credit Mapper (GTCM)
+Credit accumulation and projection:
+- Federal good conduct time (54 days/year)
+- State-specific credit schedules
+- Program participation bonuses
+- Disciplinary adjustment tracking
+
+#### Supervised Release Projector (SRP)
+Post-release supervision calculation:
+- Term length determination
+- Condition applicability
+- Violation consequence modeling
+- Early termination eligibility
+
+---
+
+## 📊 System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    JAIPI-JUDICIAL V4                        │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────┐ │
+│  │   Dashboard     │  │   Case View     │  │   Reports   │ │
+│  │   Interface     │  │   Management    │  │   Engine    │ │
+│  └────────┬────────┘  └────────┬────────┘  └──────┬──────┘ │
+│           │                    │                   │        │
+│  ┌────────┴────────────────────┴───────────────────┴──────┐ │
+│  │              Algorithm Orchestration Layer              │ │
+│  └─────────────────────────┬───────────────────────────────┘ │
+│                            │                                 │
+│  ┌─────────────────────────┴───────────────────────────────┐ │
+│  │                 Proprietary Algorithm Suite              │ │
+│  ├──────────────┬──────────────┬──────────────┬────────────┤ │
+│  │    ASRM      │    PRCS      │    HAR       │    GTCM    │ │
+│  │   Engine     │   Engine     │   Engine     │   Engine   │ │
+│  ├──────────────┼──────────────┼──────────────┼────────────┤ │
+│  │    LID       │    JCAS      │    SDBC      │    DFD     │ │
+│  │   Engine     │   Engine     │   Engine     │   Engine   │ │
+│  ├──────────────┼──────────────┼──────────────┼────────────┤ │
+│  │    MMOD      │    SRP       │  Sentence    │ Compliance │ │
+│  │   Engine     │   Engine     │  Aggregator  │   Scorer   │ │
+│  └──────────────┴──────────────┴──────────────┴────────────┘ │
+│                            │                                 │
+│  ┌─────────────────────────┴───────────────────────────────┐ │
+│  │              Data Integration Layer                      │ │
+│  │  • Court Records API  • DOC Systems  • Parole Boards    │ │
+│  └─────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| **Frontend** | React 18, TypeScript, Vite |
+| **Styling** | Tailwind CSS, shadcn/ui |
+| **Animations** | Framer Motion |
+| **Charts** | Recharts |
+| **State Management** | TanStack Query |
+| **Form Handling** | React Hook Form, Zod |
+| **Routing** | React Router v6 |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── case-view/           # Inmate case management components
+│   │   ├── CaseOverviewCard.tsx
+│   │   ├── CaseTimelineTab.tsx
+│   │   ├── DocumentManagementTab.tsx
+│   │   ├── ParoleTimelineTab.tsx
+│   │   ├── SentenceHistoryTab.tsx
+│   │   └── TransferRecordsTab.tsx
+│   ├── dashboard/           # Main dashboard components
+│   │   ├── AgentMonitor.tsx
+│   │   ├── AlertsPanel.tsx
+│   │   ├── APIHealthPanel.tsx
+│   │   ├── CompliancePanel.tsx
+│   │   ├── MetricCard.tsx
+│   │   ├── SystemStatus.tsx
+│   │   └── TimelineLockupPanel.tsx
+│   └── ui/                  # shadcn/ui components
+├── lib/
+│   ├── algorithms/          # Proprietary algorithm suite
+│   │   ├── types.ts         # Core type definitions
+│   │   ├── legalReasoning.ts
+│   │   ├── complianceScoring.ts
+│   │   ├── timelineLockup.ts
+│   │   ├── statutoryInterpretation.ts
+│   │   ├── precedentAnalyzer.ts
+│   │   ├── sentenceComputation.ts
+│   │   ├── jurisdictionCoordinator.ts
+│   │   ├── advancedCompliance.ts
+│   │   └── apiWatchdog.ts
+│   ├── mockData.ts          # Demo data generation
+│   └── utils.ts             # Utility functions
+├── pages/
+│   ├── Index.tsx            # Main dashboard
+│   ├── InmateCaseView.tsx   # Individual case view
+│   └── NotFound.tsx
+└── hooks/                   # Custom React hooks
+```
+
+---
+
+## 🔧 Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd jaipi-judicial-v4
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+---
+
+## 📋 Key Features
+
+### Dashboard
+- **System Status Monitoring** — Real-time health checks across all subsystems
+- **Metric Cards** — Key performance indicators with trend analysis
+- **Alert Management** — Prioritized notification system
+- **Agent Monitor** — Algorithm engine status tracking
+- **API Health Panel** — External integration status
+
+### Case Management
+- **Inmate Profiles** — Comprehensive case information display
+- **Sentence History** — Complete sentencing record with amendments
+- **Parole Timeline** — Hearing schedules and outcome tracking
+- **Document Management** — Legal document organization and retrieval
+- **Transfer Records** — Facility movement history
+
+### Compliance Monitoring
+- **Regulatory Adherence Scoring** — Multi-factor compliance calculation
+- **Audit Trail Generation** — Automated compliance documentation
+- **Violation Detection** — Proactive issue identification
+- **Remediation Tracking** — Resolution progress monitoring
+
+---
+
+## 🎨 Design System
+
+The application employs a **dark judicial aesthetic** with:
+- **Primary**: Gold accents (#D4AF37) representing judicial authority
+- **Background**: Deep slate tones for professional appearance
+- **Typography**: Inter for readability, monospace for data displays
+- **Animations**: Subtle transitions via Framer Motion
+- **Components**: Custom-styled shadcn/ui components
+
+---
+
+## 📜 License
+
+Proprietary software. All rights reserved.
+
+---
+
+## 🔒 Security Notice
+
+This system is designed for authorized government and legal institution use only. All algorithms and methodologies contained herein are proprietary and protected intellectual property.
+
+---
+
+<p align="center">
+  <strong>JAIPI-JUDICIAL V4</strong><br>
+  <em>Precision. Compliance. Justice.</em>
+</p>
